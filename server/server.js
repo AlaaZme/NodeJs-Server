@@ -13,7 +13,7 @@ var User = new user({
 
     name : req.body.name,
     pass : req.body.pass,
-       mail : req.body.mail,
+       mail : req.body.mail
 });
 
     User.save().then((doc)=>{

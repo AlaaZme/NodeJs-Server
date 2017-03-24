@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.post('/users',(req,res)=>{
 var User = new user({
 
-    name : req.body.name,
+    uname : req.body.name,
     pass : req.body.pass,
        mail : req.body.mail
 });
@@ -47,7 +47,7 @@ app.get('/users:/name', (req,res)=>{
 
      return res.status(404).send();
   }*/
-user.find({name:"ala"}).toArray().then((docs)=>{
+user.find({uname:"name"}).toArray().then((docs)=>{
    console.log("users");
      console.log( JSON.stringify(docs,undefined,2));//{
  //     console.log("FOUND");

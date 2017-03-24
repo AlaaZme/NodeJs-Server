@@ -11,7 +11,7 @@ app.use(bodyParser.json());
 app.post('/users',(req,res)=>{
 var User = new user({
 
-    name : req.body.text,
+    name : req.body.name,
     pass : req.body.pass,
        mail : req.body.mail,
 });

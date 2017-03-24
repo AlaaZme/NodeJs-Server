@@ -26,7 +26,7 @@ res.send(doc);
 })
 });
 // GET todos
-app.get('/todos', (req,res)=>{
+app.get('/todos/:id', (req,res)=>{
    id = req.params.id;
   if(!ObjectID.isValid(id)){
 

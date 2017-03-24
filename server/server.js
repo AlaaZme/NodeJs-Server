@@ -48,7 +48,7 @@ app.get('/users:/id', (req,res)=>{
 
      return res.status(404).send();
   }
-todo.findById(id).then((user)=>{
+user.findById(id).then((user)=>{
     if(!user){
    console.log("wrong username");
     }
@@ -65,7 +65,7 @@ var id = req.params.id;
 if(!ObjectID.isValid(id)){
     return res.status(404).send();
 }
-todo.findByIdAndRemove(id).then((user)=>{
+user.findByIdAndRemove(id).then((user)=>{
 
     if(!user)
       return res.status(404).send();

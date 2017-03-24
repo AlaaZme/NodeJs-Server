@@ -7,7 +7,6 @@ var {user}= require('./models/user');
 
 var app = express();
 const port = process.env.PORT || 3000;
-var id = "58d40ea5689466941e03159a";
 app.use(bodyParser.json());
 app.post('/todos',(req,res)=>{
 var Todo = new todo({
@@ -26,13 +25,9 @@ res.send(doc);
 })
 });
 // GET todos
-app.get('/todos/:id', (req,res)=>{
-   id = req.params.id;
-  if(!ObjectID.isValid(id)){
+app.get('/todos', (req,res)=>{
 
-     return res.status(404).send();
-  }
-  todo.findById(id).then((todo)=>{
+  todo.find().then((todo)=>{
    if(!todo){
   return res.status(404).send();
   }
@@ -45,10 +40,12 @@ res.send({todo});
 
 
 
-app.listen(port, () => {
-    console.log(`started at ${port}`);
-});
+app.get('/todos:/id', (req,res)=>{
+    var  id = req.params.id;
+  if(!ObjectID.isValid(id)){
 
+     return res.status(404).send();
+  }
 todo.findById(id).then((todo)=>{
     if(!todo){
    console.log("wrong username");
@@ -56,4 +53,10 @@ todo.findById(id).then((todo)=>{
 else
     console.log("todo by id ",todo);
 }).catch((e)=>console.log(e));
+});
+
+app.listen(port, () => {
+    console.log(`started at ${port}`);
+});
+
 module.exports = {app};

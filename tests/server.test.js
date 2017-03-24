@@ -3,10 +3,10 @@ const request = require('supertest');
 
 const {app} = require("./../server");
 const {todo} = require ("./../models/todo");
-beforeEach((done)=>{
+/*beforeEach((done)=>{
 todo.remove({}).then(()=>done());
 
-});
+});*/
 
 describe('POST /todos' ,() =>{
 

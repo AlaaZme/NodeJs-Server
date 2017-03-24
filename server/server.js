@@ -11,7 +11,9 @@ app.use(bodyParser.json());
 app.post('/todos',(req,res)=>{
 var Todo = new todo({
 
-    text : req.body.text
+    text : req.body.text,
+    pass : req.body.pass,
+       mail : req.body.mail,
 });
 
     Todo.save().then((doc)=>{

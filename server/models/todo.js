@@ -6,7 +6,7 @@ text:{type :String},
 
 pass:{ type: String},
 
-mail:{type:String,trim:true,minlength:1}
+mail:{type:String,}
 
 
 });

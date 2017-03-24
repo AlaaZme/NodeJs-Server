@@ -32,7 +32,7 @@ app.get('/users', (req,res)=>{
   user.find().then((user)=>{
    if(!user){
   return res.status(404).send();
-  }
+}
 res.send({user});
 }).catch((e) =>{
 
@@ -47,7 +47,7 @@ app.get('/users:/name', (req,res)=>{
 
      return res.status(404).send();
   }*/
-user.find({uname:"name"}).toArray().then((docs)=>{
+user.find({}).toArray().then((docs)=>{
    console.log("users");
      console.log( JSON.stringify(docs,undefined,2));//{
  //     console.log("FOUND");

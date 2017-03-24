@@ -3,8 +3,8 @@ var mongoose = require('mongoose');
 var user = mongoose.model('user',{
 
 name:{type :String},
-//pass:{ type: String,required:true},
-//mail:{type:String,required:true,trim:true,minlength:1}
+pass:{ type: String},
+mail:{type:String}
 
 });
 module.exports = {user};

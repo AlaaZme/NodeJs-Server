@@ -8,32 +8,32 @@ var {user}= require('./models/user');
 var app = express();
 const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
-app.post('/todos',(req,res)=>{
-var Todo = new todo({
+app.post('/users',(req,res)=>{
+var User = new user({
 
-    text : req.body.text,
+    name : req.body.text,
     pass : req.body.pass,
        mail : req.body.mail,
 });
 
-    Todo.save().then((doc)=>{
+    User.save().then((doc)=>{
 res.send(doc);
     },(e)=>{
         res.status(400).send(e);
     }).catch((e)=>{
-    if(!todo){
+    if(!user){
 
     }
 })
 });
 // GET todos
-app.get('/todos', (req,res)=>{
+app.get('/users', (req,res)=>{
 
-  todo.find().then((todo)=>{
-   if(!todo){
+  user.find().then((user)=>{
+   if(!user){
   return res.status(404).send();
   }
-res.send({todo});
+res.send({user});
 }).catch((e) =>{
 
      res.status(404).send();
@@ -42,34 +42,34 @@ res.send({todo});
 
 
 
-app.get('/todos:/id', (req,res)=>{
+app.get('/users:/id', (req,res)=>{
     var  id = req.params.id;
   if(!ObjectID.isValid(id)){
 
      return res.status(404).send();
   }
-todo.findById(id).then((todo)=>{
-    if(!todo){
+todo.findById(id).then((user)=>{
+    if(!user){
    console.log("wrong username");
     }
 else
-    console.log("todo by id ",todo);
+    console.log("user by id ",user);
 }).catch((e)=>console.log(e));
 });
 
 app.listen(port, () => {
     console.log(`started at ${port}`);
 });
-app.delete('/todos/:id',(req,res)=>{
+app.delete('/users/:id',(req,res)=>{
 var id = req.params.id;
 if(!ObjectID.isValid(id)){
     return res.status(404).send();
 }
-todo.findByIdAndRemove(id).then((todo)=>{
+todo.findByIdAndRemove(id).then((user)=>{
 
-    if(!todo)
+    if(!user)
       return res.status(404).send();
-      res.send(todo);
+      res.send(user);
 }).catch((e)=>{
        res.status(404).send();
 });

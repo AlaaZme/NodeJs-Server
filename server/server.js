@@ -41,6 +41,24 @@ res.send({user});
 });
 
 
+app.get('/users:/name', (req,res)=>{
+  /*  var  id = req.params.id;
+  if(!ObjectID.isValid(id)){
+
+     return res.status(404).send();
+  }*/
+user.find({name:"ala"}).toArray().then((docs)=>{
+   console.log("users");
+     console.log( JSON.stringify(docs,undefined,2));//{
+ //     console.log("FOUND");
+ // }
+  //console.log(JSON.stringify(docs,undefined,2).name==);
+    },(err)=>{
+console.log("unable to fetch user");
+    });
+
+    });
+
 
 app.get('/users:/id', (req,res)=>{
     var  id = req.params.id;

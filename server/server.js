@@ -27,11 +27,11 @@ app.post('/users',(req,res)=>{
     pass : req.body.pass,
        mail : req.body.mail*/
 
-       var body = _.pick(req.body, ['mail','pass']);
-       var user = new User(body);
+       var body = _.pick(req.body, ['email','password']);
+       var user1 = new User(body);
 
-      user.save().then((user)=>{
-       res.send(user);
+      user1.save().then((user1)=>{
+       res.send(user1);
     }).catch((e)=>{
    
      res.status(400).send(e);
@@ -65,7 +65,7 @@ res.send({user});
 
 
 
-app.get('/users:/name', (req,res)=>{
+/*app.get('/users:/name', (req,res)=>{
    var  uname = req.params.uname;
 if(!ObjectID.isValid(id)){
 
@@ -81,7 +81,7 @@ user.find({}).toArray().then((docs)=>{
 console.log("unable to fetch user");
     });
 
-    });
+    });*/
 
 
 app.get('/users:/id', (req,res)=>{

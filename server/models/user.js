@@ -6,7 +6,7 @@ var user = mongoose.model('User',{
 
 //uname:{type :String},
 
-mail:{
+email:{
     type:String,
     required:true,
     trim:true,
@@ -18,7 +18,7 @@ mail:{
     }
 
 },
-pass:{ 
+password:{ 
     type: String,
     required :true,
     minlength: 4

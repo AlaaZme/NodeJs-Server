@@ -114,9 +114,11 @@ app.get('/users/me',(req,res)=>{
      
      user.findByToken(token).then((User)=>{
          if(!User){
-
+   return Promise.reject();
          }
              res.send(User);
+     }).catch((e)=>{
+res.status(401).send();
      });
 });
 module.exports = {app};

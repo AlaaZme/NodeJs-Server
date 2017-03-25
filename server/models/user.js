@@ -2,7 +2,7 @@ var mongoose = require('mongoose');
 //const validator = require('validator');
 
 
-var User = mongoose.model('User',{
+var user = mongoose.model('user',{
 
 //uname:{type :String},
 
@@ -37,7 +37,7 @@ token:{
 }]*/
 
 });
-module.exports = {User};
+module.exports = {user};
 /*var newUser = new user({
 
     name:'alaZme'

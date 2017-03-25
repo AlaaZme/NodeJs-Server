@@ -21,7 +21,7 @@ app.use(bodyParser.json());
 
 
 app.post('/users',(req,res)=>{
-var user = new User({
+var User = new user({
 
   //  uname : req.body.uname,
      email : req.body.email,
@@ -40,7 +40,7 @@ var user = new User({
     })*/
 //});
 
-    user.save().then((doc)=>{
+    User.save().then((doc)=>{
 res.send(doc);
     },(e)=>{
         res.status(400).send(e);

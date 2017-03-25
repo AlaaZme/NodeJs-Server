@@ -4,7 +4,7 @@ const validator = require('validator');
 
 var user = mongoose.model('user',{
 
-uname:{type :String,required:true},
+//uname:{type :String,required:true},
 pass:{ 
     type: String,
     required:true,

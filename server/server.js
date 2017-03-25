@@ -11,11 +11,12 @@ process.env.MONGODB_URI = "mongodb://localhost:27017/users";
 var express = require('express');
 var bodyParser = require('body-parser');
 var {ObjectID} = require('mongodb');
+
 var {mongoose} = require('./db/mongoose.js');
 var {todo}= require('./models/todo');
 var {user}= require('./models/user');
 var {authenticate} = require('./middleware/authenticate');
-
+const _ = require('lodash');
 var app = express();
 const port = process.env.PORT || 3000;
 app.use(bodyParser.json());

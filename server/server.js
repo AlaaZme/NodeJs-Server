@@ -75,10 +75,10 @@ console.log("unable to fetch user");
 
 app.get('/users:/id', (req,res)=>{
     var  id = req.params.id;
-  if(!ObjectID.isValid(id)){
+ /* if(!ObjectID.isValid(id)){
 
      return res.status(404).send();
-  }
+  }*/
 user.findById(id).then((user)=>{
     if(!user){
    console.log("wrong username");

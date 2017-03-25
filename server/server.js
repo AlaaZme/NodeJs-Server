@@ -116,7 +116,7 @@ app.get('/users/me',(req,res)=>{
          if(!User){
 
          }
-             res.send(user);
+             res.send(User);
      });
 });
 module.exports = {app};

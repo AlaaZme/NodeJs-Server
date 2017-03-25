@@ -21,18 +21,18 @@ app.use(bodyParser.json());
 
 
 app.post('/users',(req,res)=>{
-/*var User = new user({
+var User = new user({
 
      uname : req.body.uname,
      email : req.body.email,
     password : req.body.password
     
-});*/
-       var body = _.pick(req.body, ['uname','email','password']);
-      var User = new user(body);
+});
+    //   var body = _.pick(req.body, ['uname','email','password']);
+     // var User = new user(body);
 
-    User.save().then((user)=>{
-       res.send(User);
+    User.save().then((doc)=>{
+       res.send(doc);
     }).catch((e)=>{
    
      res.status(400).send(e);

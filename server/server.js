@@ -28,22 +28,22 @@ var User = new user({
     password : req.body.password
     
 });
-    //   var body = _.pick(req.body, ['uname','email','password']);
-     // var User = new user(body);
+//user.findByToken
+//User.genrateAuthToken
+    User.save().then(()=>{
+        return User.genrateAuthToken();
+     //  res.send(doc);
+    }).then((token)=>{
+        res.header('x-auth', token).send(User);
 
-    User.save().then((doc)=>{
-       res.send(doc);
     }).catch((e)=>{
-   
-     res.status(400).send(e);
-
+            res.status(400).send(e);
     })
 //});
 
   /*  User.save().then((doc)=>{
 res.send(doc);
-    },(e)=>{
-        res.status(400).send(e);
+    },(e)=>{  d(e);
 
     });*/
 });

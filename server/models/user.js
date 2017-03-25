@@ -1,10 +1,39 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
+const validator = require('validator');
+
 
 var user = mongoose.model('user',{
 
 uname:{type :String,required:true},
-pass:{ type: String,required:true},
-mail:{type:String}
+pass:{ 
+    type: String,
+    required:true,
+    minlength: 4
+
+
+},
+mail:{
+    type:String,
+    required:true,
+    trim:true,
+    minlength:1,
+    unique:true,
+    validator : {
+        validator : validator.isEmail,
+        message : '{VALUE} is not a vaild email'
+    }
+
+},
+tokens:[{
+    access:{
+         type:String,
+         required: true
+    },
+token:{
+    type:String,
+    required:true
+}
+}]
 
 });
 module.exports = {user};

@@ -1,3 +1,13 @@
+var env = process.env.NODE_ENV ||'development';
+console.log('env ****** ', env);
+if(env === 'development'){
+process.env.PORT = 3000;
+process.env.MONGODB_URI = "mongodb://localhost:27017/users";
+}else if(env ==='test' ){
+    process.env.PORT = 3000;
+    process.env.MONGODB_URI = "mongodb://localhost:27017/usersTest";
+}
+
 var express = require('express');
 var bodyParser = require('body-parser');
 var {ObjectID} = require('mongodb');
@@ -8,15 +18,28 @@ var {user}= require('./models/user');
 var app = express();
 const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
+
+
 app.post('/users',(req,res)=>{
-var User = new user({
+/*var User = new user({
 
     uname : req.body.uname,
     pass : req.body.pass,
-       mail : req.body.mail
+       mail : req.body.mail*/
+
+       var body = _.pick(req.body,['email','pass']);
+       var User = new User(body);
+
+       User.save().then((user)=>{
+       res.send(user)
+    }).catch((e)=>{
+   
+     res.status(400).send(e);
+
+    })
 });
 
-    User.save().then((doc)=>{
+   /* User.save().then((doc)=>{
 res.send(doc);
     },(e)=>{
         res.status(400).send(e);
@@ -25,7 +48,7 @@ res.send(doc);
 
     }
 })
-});
+});*/
 // GET todos
 app.get('/users', (req,res)=>{
 
@@ -41,12 +64,13 @@ res.send({user});
 });
 
 
+
 app.get('/users:/name', (req,res)=>{
-  /*  var  id = req.params.id;
-  if(!ObjectID.isValid(id)){
+   var  name = req.params.uname;
+if(!ObjectID.isValid(id)){
 
      return res.status(404).send();
-  }*/
+  }
 user.find({}).toArray().then((docs)=>{
    console.log("users");
      console.log( JSON.stringify(docs,undefined,2));//{

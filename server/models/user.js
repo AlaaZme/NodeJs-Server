@@ -112,6 +112,14 @@ UserSchema.pre('save',function (next){
    }else
    next();
 })
+UserSchema.methods.removeToke = function(token){
+    var User= this;
+   return User.update({
+  $pull:{
+      tokens:{token}
+    }
+   });
+};
 var user = mongoose.model('user',UserSchema);
 /*
 uname:{type :String, required:true},

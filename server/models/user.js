@@ -89,8 +89,8 @@ UserSchema.pre('save',function (next){
             User.password = hash;
             next();
 
-           })
-       })
+           });
+       });
    }else
    next();
 })

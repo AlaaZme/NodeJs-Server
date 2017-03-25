@@ -126,6 +126,11 @@ res.status(401).send();
 
 
 };*/
+app.post('users/login',(req,res)=>{
+ var body = _.pick(req.body,['email','password']);
+
+ res.send(body);
+});
 app.get('/users/me', authenticate,  (req,res)=>{
     res.send(req.User);
   /* var token =req.header('x-auth');

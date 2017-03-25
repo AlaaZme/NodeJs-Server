@@ -109,7 +109,7 @@ user.findByIdAndRemove(id).then((user)=>{
 
 });
 
-app.get('user/me',(req,res)=>{
+app.get('users/me',(req,res)=>{
    var token =req.header('x-auth');
      
      user.findByToken(token).then((User)=>{

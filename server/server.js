@@ -28,10 +28,10 @@ app.post('/users',(req,res)=>{
        mail : req.body.mail*/
 
        var body = _.pick(req.body,['uname','pass','mail']);
-       var user = new user(body);
+       var User = new user(body);
 
-       user.save().then((user)=>{
-       res.send(user)
+       User.save().then((User)=>{
+       res.send(User)
     }).catch((e)=>{
    
      res.status(400).send(e);

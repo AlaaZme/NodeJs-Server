@@ -130,7 +130,13 @@ res.status(401).send();
 app.post('/users/login',(req,res)=>{
  var body = _.pick(req.body,['uname','email','password']);
 
- res.send(body);
+
+user.findByCredentials(body.uname,body.email,body.password).then((User)=>{
+    res.send(User);
+}).catch((e)=>{
+res.status(400).send();
+});
+ //res.send(body);
 });
 app.get('/users/me', authenticate,  (req,res)=>{
     res.send(req.User);

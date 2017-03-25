@@ -73,7 +73,7 @@ console.log("unable to fetch user");
     });*/
 
 
-app.get('/users/id', (req,res)=>{
+app.get('/users:/id', (req,res)=>{
     var  id = req.params.id;
  /* if(!ObjectID.isValid(id)){
 
@@ -84,7 +84,7 @@ user.findById(id).then((user)=>{
    console.log("wrong username");
     }
 else{
-    res.send({user});
+    res.send(user);
     console.log("user by id ",user);
 }
 }).catch((e)=>console.log(e));

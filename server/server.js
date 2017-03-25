@@ -31,10 +31,10 @@ var User = new user({
 //user.findByToken
 //User.genrateAuthToken
     User.save().then(()=>{
-        return user.genrateAuthToken();
+        return User.genrateAuthToken();
      //  res.send(doc);
     }).then((token)=>{
-        res.header('x-auth', token).send(User);
+        res.header('x-auth', token).send({User});
 
     }).catch((e)=>{
             res.status(400).send(e);

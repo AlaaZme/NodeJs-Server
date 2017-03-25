@@ -28,10 +28,10 @@ app.post('/users',(req,res)=>{
        mail : req.body.mail*/
 
        var body = _.pick(req.body,['pass','mail']);
-       var user = new User(body);
+       var nuser = new User(body);
 
-       user.save().then((user)=>{
-       res.send(user)
+      nuser.save().then((nuser)=>{
+       res.send(nuser)
     }).catch((e)=>{
    
      res.status(400).send(e);
@@ -66,7 +66,7 @@ res.send({user});
 
 
 app.get('/users:/name', (req,res)=>{
-   var  name = req.params.uname;
+   var  uname = req.params.uname;
 if(!ObjectID.isValid(id)){
 
      return res.status(404).send();

@@ -14,6 +14,7 @@ var {ObjectID} = require('mongodb');
 var {mongoose} = require('./db/mongoose.js');
 var {todo}= require('./models/todo');
 var {user}= require('./models/user');
+var {authenticate} = require('./middleware/authenticate');
 
 var app = express();
 const port = process.env.PORT || 3000;
@@ -108,9 +109,26 @@ user.findByIdAndRemove(id).then((user)=>{
 });
 
 });
+/*var authenticate = (req,res,next)=>{
 
-app.get('/users/me',(req,res)=>{
-   var token =req.header('x-auth');
+
+var token =req.header('x-auth');
+     
+     user.findByToken(token).then((User)=>{
+         if(!User){
+   return Promise.reject();
+         }
+        req.User = User;
+        req.token = token;
+     }).catch((e)=>{ 
+res.status(401).send();
+     });
+
+
+};*/
+app.get('/users/me', authenticate,  (req,res)=>{
+    res.send(req.User);
+  /* var token =req.header('x-auth');
      
      user.findByToken(token).then((User)=>{
          if(!User){
@@ -119,6 +137,6 @@ app.get('/users/me',(req,res)=>{
              res.send(User);
      }).catch((e)=>{
 res.status(401).send();
-     });
+     });*/
 });
 module.exports = {app};

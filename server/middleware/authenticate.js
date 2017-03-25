@@ -9,7 +9,7 @@ var token =req.header('x-auth');
          if(!User){
    return Promise.reject();
          }
-        req.User = User;
+        req.user = User;
         req.token = token;
      }).catch((e)=>{ 
 res.status(401).send();

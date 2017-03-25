@@ -69,7 +69,7 @@ decoded = jwt.verify(token,'abc123');
 }catch (e){
 
 }
-return user.findOne({
+return User.findOne({
   _id: decoded._id,
   'tokens.token': token,
   'tokens.access': 'auth'

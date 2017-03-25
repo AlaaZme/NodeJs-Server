@@ -1,3 +1,5 @@
+const path = require('path');
+
 require('./config/config');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -9,9 +11,20 @@ var {user}= require('./models/user');
 var {authenticate} = require('./middleware/authenticate');
 const _ = require('lodash');
 var app = express();
-const port = process.env.PORT || 3000;
+//const port =  3000;
+const port =process.env.PORT || 3000;
 app.use(bodyParser.json());
 
+const publicPath = path.join(__dirname,'../public');
+console.log(publicPath);
+//app.set('view engine','ejs');
+
+//app.use(express.static('./../myapp.html'));
+app.use(express.static(publicPath));
+
+app.listen(port, () => {
+    console.log(`started at ${port}`);
+});
 
 app.post('/users',(req,res)=>{
 var User = new user({
@@ -45,33 +58,12 @@ res.send({user});
 })
 });
 
-
-
-/*app.get('/users:/name', (req,res)=>{
-   var  uname = req.params.uname;
-if(!ObjectID.isValid(id)){
+app.get('/users:/id', (req,res)=>{
+    var  id = req.params.id;
+  if(!ObjectID.isValid(id)){
 
      return res.status(404).send();
   }
-user.find({}).toArray().then((docs)=>{
-   console.log("users");
-     console.log( JSON.stringify(docs,undefined,2));//{
- //     console.log("FOUND");
- // }
-  //console.log(JSON.stringify(docs,undefined,2).name==);
-    },(err)=>{
-console.log("unable to fetch user");
-    });
-
-    });*/
-
-
-app.get('/users:/id', (req,res)=>{
-    var  id = req.params.id;
- /* if(!ObjectID.isValid(id)){
-
-     return res.status(404).send();
-  }*/
 user.findById(id).then((User)=>{
     if(!User){
    console.log("wrong username");
@@ -83,9 +75,7 @@ else{
 }).catch((e)=>console.log(e));
 });
 
-app.listen(port, () => {
-    console.log(`started at ${port}`);
-});
+
 app.delete('/users/:id',(req,res)=>{
 var id = req.params.id;
 if(!ObjectID.isValid(id)){
@@ -101,23 +91,7 @@ user.findByIdAndRemove(id).then((user)=>{
 });
 
 });
-/*var authenticate = (req,res,next)=>{
 
-
-var token =req.header('x-auth');
-     
-     user.findByToken(token).then((User)=>{
-         if(!User){
-   return Promise.reject();
-         }
-        req.User = User;
-        req.token = token;
-     }).catch((e)=>{ 
-res.status(401).send();
-     });
-
-
-};*/
 app.post('/users/login',(req,res)=>{
  var body = _.pick(req.body,['uname','email','password']);
 
@@ -134,16 +108,6 @@ res.status(400).send();
 });
 app.get('/users/me', authenticate,  (req,res)=>{
     res.send(req.User);
-  /* var token =req.header('x-auth');
-     
-     user.findByToken(token).then((User)=>{
-         if(!User){
-   return Promise.reject();
-         }
-             res.send(User);
-     }).catch((e)=>{
-res.status(401).send();
-     });*/
 });
 app.delete('/users/me/token', authenticate, (req,res)=>{
     req.User.removeToken(req.token).then(()=>{
@@ -152,4 +116,9 @@ app.delete('/users/me/token', authenticate, (req,res)=>{
         res.status(400).send();
    })
 });
+/*app.listen(port, () => {
+    console.log(`started at ${port}`);
+});*/
+
+
 module.exports = {app};

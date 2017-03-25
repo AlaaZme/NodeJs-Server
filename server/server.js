@@ -34,7 +34,7 @@ var User = new user({
         return user.genrateAuthToken();
      //  res.send(doc);
     }).then((token)=>{
-        res.header('x-auth', token).send(user);
+        res.header('x-auth', token).send(User);
 
     }).catch((e)=>{
             res.status(400).send(e);

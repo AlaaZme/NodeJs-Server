@@ -112,7 +112,7 @@ UserSchema.pre('save',function (next){
    }else
    next();
 })
-UserSchema.methods.removeToke = function(token){
+UserSchema.methods.removeToken = function(token){
     var User= this;
    return User.update({
   $pull:{

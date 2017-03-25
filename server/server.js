@@ -21,25 +21,24 @@ app.use(bodyParser.json());
 
 
 app.post('/users',(req,res)=>{
-/*var User = new user({
+var user = new User({
 
-    uname : req.body.uname,
-    pass : req.body.pass,
-       mail : req.body.mail*/
-console.log("in post");
-       var body = _.pick(req.body, ['email','password']);
-       var user = new user(body);
+  //  uname : req.body.uname,
+    password : req.body.password,
+       email : req.body.email
+    /*   var body = _.pick(req.body, ['email','password']);
+       var user = new User(body);*/
 
-      user1.save().then((user1)=>{
-       res.send(user1);
+    /*  user.save().then((doc)=>{
+       res.send(doc);
     }).catch((e)=>{
    
      res.status(400).send(e);
 
-    })
+    })*/
 });
 
-   /* User.save().then((doc)=>{
+    user.save().then((doc)=>{
 res.send(doc);
     },(e)=>{
         res.status(400).send(e);
@@ -48,7 +47,7 @@ res.send(doc);
 
     }
 })
-});*/
+});
 // GET todos
 app.get('/users', (req,res)=>{
 

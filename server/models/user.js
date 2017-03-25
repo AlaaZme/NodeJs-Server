@@ -1,30 +1,30 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
+var mongoose = require('mongoose');
+//const validator = require('validator');
 
 
-var user = mongoose.model('User',{
+var User = mongoose.model('User',{
 
 //uname:{type :String},
 
 email:{
-    type:String,
-    required:true,
-    trim:true,
-    minlength:1,
-    unique:true,
-    validator : {
+    type:String
+   // required:true,
+  //  trim:true,
+   // minlength:1,
+   // unique:true,
+  /*  validator : {
         validator : validator.isEmail,
         message : '{VALUE} is not a vaild email'
-    }
+    }*/
 
 },
 password:{ 
-    type: String,
-    required :true,
-    minlength: 4
+    type: String
+  //  require :true,
+   // minlength: 4
 
 
-},
+}
 /*tokens:[{
     access:{
          type:String,
@@ -37,7 +37,7 @@ token:{
 }]*/
 
 });
-module.exports = {user};
+module.exports = {User};
 /*var newUser = new user({
 
     name:'alaZme'

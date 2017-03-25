@@ -60,6 +60,24 @@ return token;
 
 });
 };
+UserSchema.statics.findByToken = function (token){
+var User = this;
+var decoded;
+
+try{
+decoded = jwt.verify(token,'abc123');
+}catch (e){
+
+}
+return user.findOne({
+  _id: decoded._id,
+  'tokens.token': token,
+  'tokens.access': 'auth'
+
+});
+
+};
+
 var user = mongoose.model('user',UserSchema);
 /*
 uname:{type :String, required:true},

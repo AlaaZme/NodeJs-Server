@@ -28,24 +28,15 @@ var User = new user({
     password : req.body.password
     
 });
-//user.findByToken
-//User.genrateAuthToken
     User.save().then(()=>{
         return User.generateAuthToken();
-     //  res.send(doc);
     }).then((token)=>{
         res.header('x-auth', token).send(User);
 
     }).catch((e)=>{
             res.status(400).send(e);
     })
-//});
 
-  /*  User.save().then((doc)=>{
-res.send(doc);
-    },(e)=>{  d(e);
-
-    });*/
 });
 // GET todos
 app.get('/users', (req,res)=>{
@@ -114,5 +105,16 @@ user.findByIdAndRemove(id).then((user)=>{
        res.status(404).send();
 });
 
+});
+
+app.get('user/me',(req,res)=>{
+   var token =req.header('x-auth');
+     
+     user.findByToken(token).then((User)=>{
+         if(!User){
+
+         }
+             res.send(user);
+     });
 });
 module.exports = {app};

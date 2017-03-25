@@ -126,8 +126,8 @@ res.status(401).send();
 
 
 };*/
-app.post('users/login',(req,res)=>{
- var body = _.pick(req.body,['email','password']);
+app.post('/users/login',(req,res)=>{
+ var body = _.pick(req.body,['uname','email','password']);
 
  res.send(body);
 });

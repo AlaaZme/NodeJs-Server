@@ -25,7 +25,7 @@ password:{
 
 
 },
-tokens:[{
+/*tokens:[{
     access:{
          type:String,
          required: true
@@ -34,7 +34,7 @@ token:{
     type:String,
     required:true
 }
-}]
+}]*/
 
 });
 module.exports = {user};

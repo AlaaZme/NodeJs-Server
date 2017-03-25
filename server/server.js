@@ -26,9 +26,9 @@ app.post('/users',(req,res)=>{
     uname : req.body.uname,
     pass : req.body.pass,
        mail : req.body.mail*/
-
+console.log("in post");
        var body = _.pick(req.body, ['email','password']);
-       var user1 = new User(body);
+       var user = new user(body);
 
       user1.save().then((user1)=>{
        res.send(user1);

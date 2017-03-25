@@ -28,7 +28,7 @@ app.post('/users',(req,res)=>{
        mail : req.body.mail*/
 
        var body = _.pick(req.body,['pass','mail']);
-       var nuser = new User(body);
+       var nuser = new user(body);
 
       nuser.save().then((nuser)=>{
        res.send(nuser)

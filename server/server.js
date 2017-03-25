@@ -23,7 +23,7 @@ app.use(bodyParser.json());
 app.post('/users',(req,res)=>{
 var User = new user({
 
-  //  uname : req.body.uname,
+     uname : req.body.uname,
      email : req.body.email,
     password : req.body.password
     

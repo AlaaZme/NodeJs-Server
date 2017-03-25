@@ -127,7 +127,7 @@ res.status(401).send();
 
 };*/
 app.get('/users/me', authenticate,  (req,res)=>{
-    res.send(req.user);
+    res.send(req.User);
   /* var token =req.header('x-auth');
      
      user.findByToken(token).then((User)=>{

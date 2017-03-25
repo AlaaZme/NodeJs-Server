@@ -11,6 +11,7 @@ var token =req.header('x-auth');
          }
         req.User = User;
         req.token = token;
+        next();
      }).catch((e)=>{ 
 res.status(401).send();
      });

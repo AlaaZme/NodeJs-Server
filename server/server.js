@@ -27,11 +27,11 @@ app.post('/users',(req,res)=>{
     pass : req.body.pass,
        mail : req.body.mail*/
 
-       var body = _.pick(req.body,['pass','mail']);
-       var nuser = new user(body);
+       var body = _.pick(req.body, ['mail','pass']);
+       var user = new User(body);
 
-      nuser.save().then((nuser)=>{
-       res.send(nuser)
+      user.save().then((user)=>{
+       res.send(user);
     }).catch((e)=>{
    
      res.status(400).send(e);

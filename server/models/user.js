@@ -2,16 +2,10 @@ const mongoose = require('mongoose');
 const validator = require('validator');
 
 
-var user = mongoose.model('user',{
+var user = mongoose.model('User',{
 
-uname:{type :String},
-pass:{ 
-    type: String,
-    required:true,
-    minlength: 4
+//uname:{type :String},
 
-
-},
 mail:{
     type:String,
     required:true,
@@ -22,6 +16,13 @@ mail:{
         validator : validator.isEmail,
         message : '{VALUE} is not a vaild email'
     }
+
+},
+pass:{ 
+    type: String,
+    required :true,
+    minlength: 4
+
 
 },
 tokens:[{

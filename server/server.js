@@ -31,8 +31,8 @@ app.post('/users',(req,res)=>{
        var body = _.pick(req.body, ['uname','email','password']);
       var User = new user(body);
 
-    user.save().then((doc)=>{
-       res.send(doc);
+    user.save().then((user)=>{
+       res.send(user);
     }).catch((e)=>{
    
      res.status(400).send(e);
@@ -40,12 +40,12 @@ app.post('/users',(req,res)=>{
     })
 //});
 
-    User.save().then((doc)=>{
+  /*  User.save().then((doc)=>{
 res.send(doc);
     },(e)=>{
         res.status(400).send(e);
 
-    });
+    });*/
 });
 // GET todos
 app.get('/users', (req,res)=>{

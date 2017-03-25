@@ -83,8 +83,10 @@ user.findById(id).then((user)=>{
     if(!user){
    console.log("wrong username");
     }
-else
+else{
+    res.send({user});
     console.log("user by id ",user);
+}
 }).catch((e)=>console.log(e));
 });
 

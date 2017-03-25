@@ -112,8 +112,8 @@ user.findByIdAndRemove(id).then((user)=>{
 app.get('users/me',(req,res)=>{
    var token =req.header('x-auth');
      
-     user.findByToken(token).then((User)=>{
-         if(!User){
+     user.findByToken(token).then((user)=>{
+         if(!user){
 
          }
              res.send(user);

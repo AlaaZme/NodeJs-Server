@@ -31,8 +31,8 @@ app.post('/users',(req,res)=>{
        var body = _.pick(req.body, ['uname','email','password']);
       var User = new user(body);
 
-    user.save().then((user)=>{
-       res.send(user);
+    User.save().then((User)=>{
+       res.send(User);
     }).catch((e)=>{
    
      res.status(400).send(e);

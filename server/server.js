@@ -29,7 +29,7 @@ app.post('/users',(req,res)=>{
     
 });*/
        var body = _.pick(req.body, ['uname','email','password']);
-     //  var User = new user(body);
+      var User = new user(body);
 
     user.save().then((doc)=>{
        res.send(doc);

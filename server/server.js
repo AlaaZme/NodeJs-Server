@@ -73,7 +73,7 @@ console.log("unable to fetch user");
     });*/
 
 
-app.get('/users:/id', (req,res)=>{
+app.get('/users/id', (req,res)=>{
     var  id = req.params.id;
  /* if(!ObjectID.isValid(id)){
 

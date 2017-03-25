@@ -24,29 +24,28 @@ app.post('/users',(req,res)=>{
 var user = new User({
 
   //  uname : req.body.uname,
-    password : req.body.password,
-       email : req.body.email
+     email : req.body.email,
+    password : req.body.password
+    
+});
     /*   var body = _.pick(req.body, ['email','password']);
        var user = new User(body);*/
 
-    /*  user.save().then((doc)=>{
+     /* user.save().then((doc)=>{
        res.send(doc);
     }).catch((e)=>{
    
      res.status(400).send(e);
 
     })*/
-});
+//});
 
     user.save().then((doc)=>{
 res.send(doc);
     },(e)=>{
         res.status(400).send(e);
-    }).catch((e)=>{
-    if(!user){
 
-    }
-})
+    });
 });
 // GET todos
 app.get('/users', (req,res)=>{

@@ -41,12 +41,12 @@ token:{
 
 });
 UserSchema.methods.generateAuthToken = function(){
-var user = this;
+var User = this;
 var access = 'auth';
-var token = jwt.sign({_id: user._id.toHexString(),access},'abc123').toString();
-user.token.push({access,token});
+var token = jwt.sign({_id: User._id.toHexString(),access},'abc123').toString();
+User.tokens.push({access,token});
 
-return user.save().then(()=>{
+return User.save().then(()=>{
 return token;
 
 });

@@ -23,91 +23,8 @@ app.use(function(req, res, next) {
 });
 
 const port = process.env.PORT || 3000;
-//app.use(bodyParser.json());
-
-//const publicPath = path.join(__dirname,'../public');
-//console.log(publicPath);
-//app.set('view engine','ejs');
-//0app.use(express.static(publicPath));
-//ap11p.use(express.static('./../myapp.html'));
-
-
-
-//---------------------------------------------
-
-
-var http = require('http');
-var fs = require('fs');
-var formidable = require("formidable");
-var util = require('util');
-
-var server = http.createServer(function (req, res) {
-    if (req.method.toLowerCase() == 'get') {
-        displayForm(res);
-    } else if (req.method.toLowerCase() == 'post') {
-        processAllFieldsOfTheForm(req, res);
-    }
-
-});
-
-function displayForm(res) {
-    fs.readFile('form.html', function (err, data) {
-        res.writeHead(200, {
-            'Content-Type': 'text/html',
-                'Content-Length': data.length
-        });
-        res.write(data);
-        res.end();
-    });
-}
-
-function processAllFieldsOfTheForm(req, res) {
-    var form = new formidable.IncomingForm();
-
-    form.parse(req, function (err, fields, files) {
-        //Store the data from the fields in your data store.
-        //The data store could be a file or database or any other store based
-        //on your application.
-        res.writeHead(200, {
-            'content-type': 'text/plain'
-            
-        });
-       // res.write('received the data:\n\n');
-     /*   res.end(util.inspect({
-            fields: fields
-            //files: files
-        }));*/
-
-
-           //  req.body.uname
-           //   req.body.email= fields.email,
-             //   console.log(fieldsemail),
-           //    req.body.password=  fields.password
-             //    console.log(fields.password)
-    });
-}
-
-//server.listen(1185);
-console.log("server listening on 1185");
-
-
-
-/*request({
-  uri: "http://www.cjihrig.com/development/php/hello_form.php",
-  method: "POST",
-  form: {
-    name: "Bob"
-  }
-}, function(error, response, body) {
-  console.log(body);
-});
-*/
-
-
 
 //-----------------------------------------
-
-
 
 /*app.post('/', function(req, response){
      res.send('Username: ' + req.body.username);
@@ -151,9 +68,6 @@ res.send({user});
      res.status(404).send();
 })
 });
-
-
-
 
 
 app.get('/hhhh', (req,res)=>{
@@ -225,23 +139,4 @@ app.listen(port, () => {
     console.log(`started at ${port}`);
 });
 
-
-/*function displayForm(res) {
-  /*  fs.readFile('index.html', function (err, data) {
-      /*  res.writeHead(200, {
-         'Content-Type': 'application/json',
-                'Content-Length': data.length
-    
-        });
-      //  res.write(data.JSON.stringify());
-
-
-    //    console.log(res.usname);
-     
-        //res.end();
-    });
-}*/
-/*app.listen(port, () => {
-    console.log(`started at ${port}`);
-});*/
 module.exports = {app};

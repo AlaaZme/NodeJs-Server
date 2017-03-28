@@ -3,14 +3,17 @@
     <head>
     </head>
     <body>
-        <form id="lgnhtml"  method="POST" action="/users/login" >
-       name: <input type="text" id="myname"><br>
-      email:  <input type="text" id="mymail"><br>
-      password:  <input type="password" id="mypass"><br>
+
+        <form action="/users" method="POST" enctype="multipart/form-data" >
+
+      name: <input type="text"  name="uname"> <br>
+
+      email:  <input type="text" name="email"> <br>
+
+      password:  <input type="password" name="password"><br>
+
         <input type="submit" id="pressS">
         </form>
-
-
 
     </body>
 

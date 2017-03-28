@@ -1,6 +1,6 @@
 const path = require('path');
 
-var request = require("request");
+//var request = require("request");
 require('./config/config');
 var express = require('express');
 var bodyParser = require('body-parser');
@@ -38,7 +38,7 @@ app.post('/users',(req,res)=>{
 
    console.log("in server register");
 
-  processAllFieldsOfTheForm(req, res);
+  //processAllFieldsOfTheForm(req, res);
 
 var User = new user({
     

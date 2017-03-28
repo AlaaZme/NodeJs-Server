@@ -14,7 +14,7 @@ email:{
     trim:true,
    minlength:1,
    unique:true,
-/*  validate : {
+  /*validate : {
         validator : validator.isEmail,
         message : '{VALUE} is not a vaild email'
     }*/

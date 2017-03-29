@@ -119,7 +119,7 @@ console.log("in IF unable to fetch user");
     }
     else{
   console.log(User.uname);
-    User.invalidate("uname", "username must be unique");
+ //   User.invalidate("uname", "username must be unique");
           //  done(new Error("username must be unique"));
     }
 

@@ -106,7 +106,7 @@ user.find(User.uname).then((User)=>{
    console.log("wrong username");
     }
 else{
-    res.send(User);
+  //  res.send(User);
     console.log("user by id ",User);
 }
 })

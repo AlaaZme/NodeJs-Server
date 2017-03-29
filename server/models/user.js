@@ -100,7 +100,7 @@ UserSchema.statics.findByCredentials = function (uname,email,password){
 
 UserSchema.pre('save',function (next){
     var User=this;
- user.find([{username: User.username}],
+ /*user.find([{username: User.username}],
             function(err, User){
     if(err) {
       return next(err);
@@ -114,7 +114,7 @@ UserSchema.pre('save',function (next){
     else{
       next();
     }   
-  })
+  })*/
    if( User.isModified('password')){
        bcrypt.genSalt(10,(err,salt)=>{
            bcrypt.hash(User.password,salt,(err,hash)=>{

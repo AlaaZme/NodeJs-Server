@@ -108,9 +108,7 @@ console.log("unable to fetch user");
     else
   console.log(document.uname);
  // return Promise.reject();
-}
-
-);
+}).catch((err)=>console.log(err));
 
    if( User.isModified('password')){
        bcrypt.genSalt(10,(err,salt)=>{

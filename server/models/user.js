@@ -101,9 +101,9 @@ UserSchema.statics.findByCredentials = function (uname,email,password){
 UserSchema.pre('save',function (next){
     var User=this;
     
-user.collection.findOne({uname :"sdfdsfds"}, function(err, document) {
+user.collection.findOne({uname :"sdfdsfdssss"}, function(err, document) {
   console.log(document.uname);
-  return Promise.reject();
+ // return Promise.reject();
 }  ,(err)=>{
 console.log("unable to fetch user");
     }

@@ -49,7 +49,7 @@ var User = new user({
  var body = _.pick(req.body,['uname']);
 
  // var body = _.pick(req.body,'uname');
-   user.findByCredentials(body.uname,body.email,body.password).then((User)=>{
+   user.findByCredentials(body.uname).then((User)=>{
  // user.findByCredentials(body.uname).then((User)=>{
       return User.generateAuthToken().then((token)=>{
          res.header('x-auth',token).send(User);

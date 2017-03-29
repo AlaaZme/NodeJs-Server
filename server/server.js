@@ -46,7 +46,7 @@ var User = new user({
     password : req.body.password
     
 });
-user.collection.findOne({uname : "Ala"}, function(err, User) {
+user.collection.findOne({uname : req.body.uname}, function(err, User) {
     if(err){
 console.log("in IF unable to fetch user");
     }

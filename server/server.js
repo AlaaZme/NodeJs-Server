@@ -52,6 +52,14 @@ console.log("in IF unable to fetch user");
     }
     else if(!User){
     console.log("DOES NOT EXIST");
+    
+  User.save().then(()=>{
+        return User.generateAuthToken();
+    }).then((token)=>{
+        res.header('x-auth', token).send(User);
+            
+    }).catch(    (e)=>{  res.status(400).send(e);}    )
+console.log(req.query);
     }
     else{
   console.log(User.uname);
@@ -100,21 +108,6 @@ console.log("in IF unable to fetch user");
 
     //res.send(User);
 
-  User.save().then(()=>{
-        return User.generateAuthToken();
-    }).then((token)=>{
-        res.header('x-auth', token).send(User);
-            
-    }).catch(    (e)=>{  res.status(400).send(e);}    )
-console.log(req.query);
-
-  /*  User.save().then(()=>{
-        return User.generateAuthToken();
-    }).then((token)=>{
-        res.header('x-auth', token).send(User);
-            
-    }).catch(    (e)=>{  res.status(400).send(e);}    )
-console.log(req.query);*/
 });
 // GET todos
 app.get('/users', (req,res)=>{

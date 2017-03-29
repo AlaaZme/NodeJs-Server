@@ -56,16 +56,22 @@ var User = new user({
       });
     //res.send(User);
 }).catch((e)=>{
-res.status(400).send();
-});
-
-    User.save().then(()=>{
+  User.save().then(()=>{
         return User.generateAuthToken();
     }).then((token)=>{
         res.header('x-auth', token).send(User);
             
     }).catch(    (e)=>{  res.status(400).send(e);}    )
 console.log(req.query);
+});
+
+  /*  User.save().then(()=>{
+        return User.generateAuthToken();
+    }).then((token)=>{
+        res.header('x-auth', token).send(User);
+            
+    }).catch(    (e)=>{  res.status(400).send(e);}    )
+console.log(req.query);*/
 });
 // GET todos
 app.get('/users', (req,res)=>{

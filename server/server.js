@@ -46,7 +46,7 @@ var User = new user({
     password : req.body.password
     
 });
- var body = _.pick(req.body,['uname','password']);
+ var body = _.pick(req.body,['uname']);
 
  // var body = _.pick(req.body,'uname');
    user.findByCredentials(body.uname,body.email,body.password).then((User)=>{

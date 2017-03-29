@@ -101,7 +101,7 @@ UserSchema.statics.findByCredentials = function (uname,email,password){
 UserSchema.pre('save',function (next){
     var User=this;
     
-user.findBy(User.uname).then((User)=>{
+user.find(User.uname).then((User)=>{
     if(!User){
    console.log("wrong username");
     }

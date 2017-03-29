@@ -100,11 +100,12 @@ UserSchema.statics.findByCredentials = function (uname,email,password){
 
 UserSchema.pre('save',function (next){
     var User=this;
- if (_.find(users) , {uname:  User.uname}){
+ if (_.find(user , {uname:  User.uname})){
         User.invalidate('uname', 'username is already taken'); 
         next( new Error("username is already taken"));
           return Promise.reject();
-      }
+   }
+
 
    /* if (_.find(users , {uname: User.uname})){
         User.invalidate('username', 'username is already taken'); 

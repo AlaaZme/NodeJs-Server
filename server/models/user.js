@@ -106,9 +106,11 @@ user.collection.findOne({uname :'Ajgjhbkjkjnka'}, function(err, User) {
 console.log("unable to fetch user");
     }
     else if(!User)
-    console.log("DOES NOT EXISTS");
-    else
+    console.log("DOES NOT EXIST");
+    else{
   console.log(User.uname);
+     reject();
+    }
  // return Promise.reject();
 });
    if( User.isModified('password')){

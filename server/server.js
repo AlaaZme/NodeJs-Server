@@ -37,7 +37,7 @@ app.get('/', function(req, res) {
 app.post('/users',(req,res)=>{
 
    console.log("in server register");
-
+var tmpUser = new user();
   //processAllFieldsOfTheForm(req, res);
 var User = new user({
     
@@ -48,11 +48,11 @@ var User = new user({
 });
 var temp =  req.body.uname;
 
-user.collection.findOne({uname :temp}, function(err, User) {
+user.collection.findOne({uname :temp}, function(err,tmpUser) {
     if(err){
 console.log("in IF unable to fetch user");
     }
-    else if(!User){
+    else if(!tmpUser){
     console.log("DOES NOT EXIST");
     
   User.save().then(()=>{
@@ -64,7 +64,7 @@ console.log("in IF unable to fetch user");
 console.log(req.query);
     }
     else{
-  console.log(User.uname);
+  console.log(tmpUser.uname);
  //   User.invalidate("uname", "username must be unique");
           //  done(new Error("username must be unique"));
     }

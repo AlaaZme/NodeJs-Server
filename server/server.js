@@ -46,7 +46,7 @@ var User = new user({
     password : req.body.password
     
 });
-user.find({'uname':req.body.uname},function(err,Rtg){
+/*user.find({'uname':req.body.uname},function(err,Rtg){
 
     
         if (err) {

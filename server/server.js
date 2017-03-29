@@ -46,7 +46,26 @@ var User = new user({
     password : req.body.password
     
 });
+user.find({'uname':req.body.uname},function(err,User){
 
+    
+        if (err) {
+
+            console.log('Signup error');
+            return done(err);
+        }
+
+        //if user found.
+        if (user.length!=0) {
+          if(user[0].uname){
+            console.log('Username already exists, username: ' + uname);                         
+             }                             
+             var err = new Error();
+            err.status = 310;
+            return done(err);
+
+        }
+});
    /* db.collection('users').find({text:"Ala"}).toArray().then((docs)=>{
    console.log("users");
      console.log( JSON.stringify(docs,undefined,2));//{

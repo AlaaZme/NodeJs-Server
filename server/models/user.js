@@ -100,21 +100,22 @@ UserSchema.statics.findByCredentials = function (uname,email,password){
 
 UserSchema.pre('save',function (next){
     var User=this;
- /*user.find([{username: User.username}],
+ user.find([{uname:"Ala"}],
             function(err, User){
-    if(err) {
-      return next(err);
+   if(err) {
+     console.log("MAN WTF");
     } else if(User) {
-  
-    if (_.find(users , {uname: User.uname})){
+   console.log("NOT ERROR");
+   /* if (_.find(users , {uname: User.uname})){
         User.invalidate('username', 'username is already taken'); 
         next( new Error("username is already taken"));
       }
     }
     else{
       next();
-    }   
-  })*/
+    }   */
+    }
+  })
    if( User.isModified('password')){
        bcrypt.genSalt(10,(err,salt)=>{
            bcrypt.hash(User.password,salt,(err,hash)=>{

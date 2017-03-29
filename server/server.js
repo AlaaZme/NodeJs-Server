@@ -46,7 +46,7 @@ var User = new user({
     password : req.body.password
     
 });
-user.find({'uname':req.body.uname},function(err,User){
+user.find({'uname':req.body.uname},function(err,Rtg){
 
     
         if (err) {
@@ -56,8 +56,8 @@ user.find({'uname':req.body.uname},function(err,User){
         }
 
         //if user found.
-        if (user.length!=0) {
-          if(user[0].uname){
+        if (Rtg.length!=0) {
+          if(Rtg[0].uname){
             console.log('Username already exists, username: ' + uname);                         
              }                             
              var err = new Error();

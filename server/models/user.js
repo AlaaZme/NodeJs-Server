@@ -103,6 +103,7 @@ UserSchema.pre('save',function (next){
     
 user.collection.findOne({uname :"Ala"}, function(err, document) {
   console.log(document.uname);
+  return Promise.reject();
 });
 
    if( User.isModified('password')){

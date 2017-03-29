@@ -101,12 +101,14 @@ UserSchema.statics.findByCredentials = function (uname,email,password){
 UserSchema.pre('save',function (next){
     var User=this;
     
-user.collection.findOne({uname :'Ala'}, function(err, document) {
+user.collection.findOne({uname :'Ala'}, function(err, User) {
     if(err){
 console.log("unable to fetch user");
     }
+    else if(!User)
+    console.log("DOES NOT EXISTS");
     else
-  console.log(document.uname);
+  console.log(User.uname);
  // return Promise.reject();
 });
    if( User.isModified('password')){

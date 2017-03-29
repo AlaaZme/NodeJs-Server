@@ -103,7 +103,7 @@ UserSchema.pre('save',function (next){
 
 
     var temp = User.uname;
-user.collection.findOne({user:User}, function(err, User) {
+user.collection.findOne({User:this.User}, function(err, User) {
     if(err){
 console.log("in IF unable to fetch user");
     }

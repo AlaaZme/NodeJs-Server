@@ -46,11 +46,18 @@ var User = new user({
     password : req.body.password
     
 });
-   var body = _.pick(req.body,['uname','password']);
+ var body = _.pick(req.body,['uname','password']);
+
+ // var body = _.pick(req.body,'uname');
    user.findByCredentials(body.uname,body.email,body.password).then((User)=>{
-       console.log("already exists");
-       return;
-   });
+ // user.findByCredentials(body.uname).then((User)=>{
+      return User.generateAuthToken().then((token)=>{
+         res.header('x-auth',token).send(User);
+      });
+    //res.send(User);
+}).catch((e)=>{
+res.status(400).send();
+});
 
     User.save().then(()=>{
         return User.generateAuthToken();

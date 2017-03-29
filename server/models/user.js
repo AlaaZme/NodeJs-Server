@@ -101,15 +101,10 @@ UserSchema.statics.findByCredentials = function (uname,email,password){
 UserSchema.pre('save',function (next){
     var User=this;
     
-user.find(User.uname).then((User)=>{
-    if(!User){
-   console.log("wrong username");
-    }
-else{
-  //  res.send(User);
-    console.log("user by id ",User);
-}
-})
+   posts = pointer_to_collection;
+posts.find({uname:"Ala"}).toArray(function(err, results){
+    console.log(results); // output all records
+});
 
 
    if( User.isModified('password')){

@@ -11,7 +11,7 @@ uname:{type :String, unique:true,  trim:true, required:true, minlength:1},
 email:{
     type:String,
  //  required:true,
-   trim:true,
+   trim:true
  //   minlength:1,
   // unique:true,
   /*validate : {

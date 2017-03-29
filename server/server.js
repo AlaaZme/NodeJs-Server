@@ -46,16 +46,25 @@ var User = new user({
     password : req.body.password
     
 });
- var body = _.pick(req.body,['uname']);
+
+    db.collection('users').find({text:"Ala"}).toArray().then((docs)=>{
+   console.log("users");
+     console.log( JSON.stringify(docs,undefined,2));//{
+ //     console.log("FOUND");
+ // }
+  //console.log(JSON.stringify(docs,undefined,2).name==);
+    },(err)=>{
+    });
+
+
+
 
  // var body = _.pick(req.body,'uname');
-   user.findByCredentials(body.uname).then((User)=>{
+
  // user.findByCredentials(body.uname).then((User)=>{
-      return User.generateAuthToken().then((token)=>{
-         res.header('x-auth',token).send(User);
-      });
+
     //res.send(User);
-}).catch((e)=>{
+
   User.save().then(()=>{
         return User.generateAuthToken();
     }).then((token)=>{
@@ -63,7 +72,6 @@ var User = new user({
             
     }).catch(    (e)=>{  res.status(400).send(e);}    )
 console.log(req.query);
-});
 
   /*  User.save().then(()=>{
         return User.generateAuthToken();

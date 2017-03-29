@@ -39,7 +39,6 @@ app.post('/users',(req,res)=>{
    console.log("in server register");
 
   //processAllFieldsOfTheForm(req, res);
-
 var User = new user({
     
      uname : req.body.uname,
@@ -47,6 +46,12 @@ var User = new user({
     password : req.body.password
     
 });
+   var body = _.pick(req.body,['uname','password']);
+   user.findByCredentials(body.uname,body.email,body.password).then((User)=>{
+       console.log("already exists");
+       return;
+   });
+
     User.save().then(()=>{
         return User.generateAuthToken();
     }).then((token)=>{

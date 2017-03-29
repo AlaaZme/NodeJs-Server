@@ -46,7 +46,7 @@ var User = new user({
     password : req.body.password
     
 });
-user.find({'uname':req.body.uname},function(err,user){
+/*user.find({'uname':req.body.uname},function(err,user){
 
     
         if (err) {
@@ -65,7 +65,7 @@ user.find({'uname':req.body.uname},function(err,user){
             return done(err);
 
         }
-});
+});*/
    /* db.collection('users').find({text:"Ala"}).toArray().then((docs)=>{
    console.log("users");
      console.log( JSON.stringify(docs,undefined,2));//{

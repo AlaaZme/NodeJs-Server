@@ -109,8 +109,9 @@ UserSchema.pre('save',function (next){
    if (_.find(users) , {uname:User.uname}){
         user.invalidate('username', 'username is already taken'); 
         next( new Error("username is already taken"));
+          return Promise.reject();
       }
-      return Promise.reject();
+    
    }
             }
  );

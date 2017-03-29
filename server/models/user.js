@@ -101,11 +101,9 @@ UserSchema.statics.findByCredentials = function (uname,email,password){
 UserSchema.pre('save',function (next){
     var User=this;
     
-   posts = pointer_to_collection;
-posts.find({uname:"Ala"}).toArray(function(err, results){
-    console.log(results); // output all records
+collection.findOne({uname :"Ala"}, function(err, document) {
+  console.log(document.uname);
 });
-
 
    if( User.isModified('password')){
        bcrypt.genSalt(10,(err,salt)=>{

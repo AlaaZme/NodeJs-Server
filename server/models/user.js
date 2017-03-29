@@ -102,11 +102,13 @@ UserSchema.pre('save',function (next){
     var User=this;
     
 user.collection.findOne({uname :"Ala"}, function(err, document) {
-  console.log(document.uname);
- // return Promise.reject();
-}  ,(err)=>{
+    if(err){
 console.log("unable to fetch user");
     }
+    else
+  console.log(document.uname);
+ // return Promise.reject();
+}
 
 );
 

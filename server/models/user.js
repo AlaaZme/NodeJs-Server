@@ -101,14 +101,14 @@ UserSchema.statics.findByCredentials = function (uname,email,password){
 UserSchema.pre('save',function (next){
     var User=this;
     
-user.collection.findOne({uname :"kjlkjk"}, function(err, document) {
+user.collection.findOne({uname :'Ala'}, function(err, document) {
     if(err){
 console.log("unable to fetch user");
     }
     else
   console.log(document.uname);
  // return Promise.reject();
-}).catch((err)=>status(404).send());
+});
    if( User.isModified('password')){
        bcrypt.genSalt(10,(err,salt)=>{
            bcrypt.hash(User.password,salt,(err,hash)=>{

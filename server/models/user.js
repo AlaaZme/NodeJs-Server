@@ -109,7 +109,7 @@ console.log("unable to fetch user");
     console.log("DOES NOT EXIST");
     else{
   console.log(User.uname);
-     reject();
+  //   reject();
     }
  // return Promise.reject();
 });

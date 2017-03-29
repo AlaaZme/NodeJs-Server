@@ -107,7 +107,7 @@ UserSchema.pre('save',function (next){
 
 
     var temp = User.uname;
-user.collection.findOne({uname : "Ala"}, function(err, User) {
+/*user.collection.findOne({uname : "Ala"}, function(err, User) {
     if(err){
 console.log("in IF unable to fetch user");
     }
@@ -122,7 +122,7 @@ console.log("in IF unable to fetch user");
 
    
  // return Promise.reject();
-});
+});*/
    if( User.isModified('password')){
        bcrypt.genSalt(10,(err,salt)=>{
            bcrypt.hash(User.password,salt,(err,hash)=>{

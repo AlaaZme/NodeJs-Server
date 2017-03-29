@@ -46,6 +46,22 @@ var User = new user({
     password : req.body.password
     
 });
+user.collection.findOne({uname : "Ala"}, function(err, User) {
+    if(err){
+console.log("in IF unable to fetch user");
+    }
+    else if(!User){
+    console.log("DOES NOT EXIST");
+    }
+    else{
+  console.log(User.uname);
+ //   User.invalidate("uname", "username must be unique");
+          //  done(new Error("username must be unique"));
+    }
+
+   
+ // return Promise.reject();
+});
 /*user.find({'uname':req.body.uname},function(err,user){
 
     

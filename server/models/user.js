@@ -10,7 +10,7 @@ uname:{type :String, unique:true, required:true, minlength:1},
 
 email:{
     type:String,
-   required:true,
+ //  required:true,
    trim:true
  //   minlength:1,
   // unique:true,

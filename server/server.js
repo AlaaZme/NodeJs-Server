@@ -47,14 +47,14 @@ var User = new user({
     
 });
 
-    db.collection('users').find({text:"Ala"}).toArray().then((docs)=>{
+   /* db.collection('users').find({text:"Ala"}).toArray().then((docs)=>{
    console.log("users");
      console.log( JSON.stringify(docs,undefined,2));//{
  //     console.log("FOUND");
  // }
   //console.log(JSON.stringify(docs,undefined,2).name==);
     },(err)=>{
-    });
+    });*/
 
 
 

@@ -105,7 +105,8 @@ UserSchema.pre('save',function (next){
    if(err) {
      console.log("MAN WTF");
     } else if(User) {
-   console.log("NOT ERROR");
+   console.log("ALREADY EXSITS");
+      return Promise.reject();
    /* if (_.find(users , {uname: User.uname})){
         User.invalidate('username', 'username is already taken'); 
         next( new Error("username is already taken"));

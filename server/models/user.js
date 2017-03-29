@@ -107,11 +107,13 @@ user.collection.findOne({uname : "Ala"}, function(err, User) {
     if(err){
 console.log("in IF unable to fetch user");
     }
-    else if(!User)
+    else if(!User){
     console.log("DOES NOT EXIST");
+    }
     else{
   console.log(User.uname);
-        next();
+    User.invalidate("uname", "username must be unique");
+            done(new Error("username must be unique"));
     }
 
    

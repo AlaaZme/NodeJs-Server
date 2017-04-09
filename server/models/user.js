@@ -85,7 +85,7 @@ return user.findOne({
 });
 
 };
-UserSchema.statics.findByCredentials = function (uname,email,password){
+UserSchema.statics.findByCredentials = function (uname,password){
     var User = this;
     return User.findOne({uname}).then((user)=>{
          if(!user){

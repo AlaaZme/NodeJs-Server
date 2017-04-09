@@ -8,26 +8,25 @@ var UserSchema = new mongoose.Schema({
 
 uname:{type :String, unique:true, required:true, minlength:1
 },
-fName:{type :String, unique:true, required:true, minlength:1
+fName:{type :String, required:true, minlength:1
 },
-lName:{type :String, unique:true, required:true, minlength:1
+lName:{type :String, required:true, minlength:1
 },
-auth:{type :String, unique:true, required:true, minlength:1
+auth:{type :String, required:true, minlength:1
 },
-Gender:{type :String, unique:true, required:true, minlength:1
+Gender:{type :String, required:true, minlength:1
 },
 PhoneNo:{type :String, unique:true, required:true, minlength:1
 },
 email:{
     type:String,
    required:true,
-   trim:true,
+ //  trim:true,
 minlength:5,
-  unique:true,
- validate : {
+ /*validate : {
         validator : validator.isEmail,
         message : '{VALUE} is not a vaild email'
-    }
+    }*/
 },
 password:{ 
     type: String,

@@ -9,9 +9,9 @@ var UserSchema = new mongoose.Schema({
 
 uname:{type :String, unique:true, required:true, minlength:1
 },
-/*fName:{type :String, required:true, minlength:1
+fName:{type :String, required:true, minlength:1
 },
-lName:{type :String, required:true, minlength:1
+/*lName:{type :String, required:true, minlength:1
 },
 authen:{type :String, required:true, minlength:1
 },

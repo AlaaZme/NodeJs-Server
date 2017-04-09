@@ -167,18 +167,18 @@ user.findByIdAndRemove(id).then((user)=>{
 
 app.post('/users/login',(req,res)=>{
     //  console.log(req.body.myname);      
- //var body = _.pick(req.body,['uname','password']);
-// user.find('uname','password')
+ var body = _.pick(req.body,['uname','password']);
+
  // var body = _.pick(req.body,'uname');
- //  user.findByCredentials(body.uname,body.email,body.password).then((User)=>{
- /* user.findByCredentials(body.uname).then((User)=>{
+   user.findByCredentials(body.uname,body.email,body.password).then((User)=>{
+ // user.findByCredentials(body.uname).then((User)=>{
       return User.generateAuthToken().then((token)=>{
          res.header('x-auth',token).send(User);
       });
     //res.send(User);
 }).catch((e)=>{
 res.status(400).send();
-});*/
+});
  //res.send(body);
 });
 app.get('/users/me', authenticate,  (req,res)=>{

@@ -48,7 +48,7 @@ var User = new user({
       PhoneNo: req.body.PhoneNo,
            Gender: req.body.Gender,
               email: req.body.email,
-                authn: req.body.authn,
+                authen: req.body.authen,
     password : req.body.password
     
 });

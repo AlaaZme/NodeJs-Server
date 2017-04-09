@@ -44,6 +44,11 @@ var User = new user({
      uname : req.body.uname,
     email : req.body.email,
     fName : req.body.fName,
+      lName : req.body.lName,
+      PhoneNo: req.body.PhoneNo,
+           Gender: req.body.Gender,
+              email: req.body.email,
+                authn: req.body.authn,
     password : req.body.password
     
 });

@@ -11,22 +11,25 @@ uname:{type :String, unique:true, required:true, minlength:1
 },
 fName:{type :String, minlength:1
 },
-/*authen:{type :String, required:true, minlength:1
+lName:{type :String, minlength:1
 },
-Gender:{type :String, required:true, minlength:1
+authen:{type :String, minlength:1
 },
-PhoneNo:{type :String, unique:true, required:true, minlength:1
+Gender:{type :String, minlength:1
+},
+PhoneNo:{type :String, unique:true,minlength:1
 },
 email:{
     type:String,
-   required:true,
+
  //  trim:true,
 minlength:5,
- validate : {
+
+/* validate : {
         validator : validator.isEmail,
         message : '{VALUE} is not a vaild email'
-    }
-},*/
+    }*/
+},
 password:{ 
     type: String,
    required :true,
@@ -50,7 +53,7 @@ UserSchema.methods.toJSON = function () {
     var User = this;
     var UserObject = User.toObject();
 
-    return _.pick(UserObject, ['_id','uname','fName','password'])
+    return _.pick(UserObject, ['_id','uname','fName','lName','PhoneNo','authn','Gender','email','password'])
 
 };
 UserSchema.methods.generateAuthToken = function(){

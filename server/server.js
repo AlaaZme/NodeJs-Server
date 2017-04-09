@@ -167,7 +167,7 @@ user.findByIdAndRemove(id).then((user)=>{
 
 app.post('/users/login',(req,res)=>{
     //  console.log(req.body.myname);      
- var body = _.pick(req.body,['uname','password']);
+ var body = _.pick(req.body,['uname','fName','password']);
 
  // var body = _.pick(req.body,'uname');
    user.findByCredentials(body.uname,body.email,body.password).then((User)=>{

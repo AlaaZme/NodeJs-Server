@@ -12,7 +12,7 @@ fName:{type :String, required:true, minlength:1
 },
 lName:{type :String, required:true, minlength:1
 },
-auth:{type :String, required:true, minlength:1
+authen:{type :String, required:true, minlength:1
 },
 Gender:{type :String, required:true, minlength:1
 },

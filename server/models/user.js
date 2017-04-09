@@ -16,7 +16,7 @@ auth:{type :String, unique:true, required:true, minlength:1
 },
 Gender:{type :String, unique:true, required:true, minlength:1
 },
-PhoneNo:{type :Number, unique:true, required:true, minlength:1
+PhoneNo:{type :String, unique:true, required:true, minlength:1
 },
 email:{
     type:String,

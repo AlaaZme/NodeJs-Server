@@ -43,6 +43,7 @@ var User = new user({
     
      uname : req.body.uname,
     email : req.body.email,
+    fName : req.body.fName,
     password : req.body.password
     
 });

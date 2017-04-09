@@ -3,6 +3,7 @@ const validator = require('validator');
 const jwt = require('jsonwebtoken');
 const _ = require('lodash');
 const bcrypt = require('bcryptjs');
+
 var UserSchema = new mongoose.Schema({
 
 
@@ -10,7 +11,7 @@ uname:{type :String, unique:true, required:true, minlength:1
 },
 fName:{type :String, required:true, minlength:1
 },
-/*lName:{type :String, required:true, minlength:1
+lName:{type :String, required:true, minlength:1
 },
 authen:{type :String, required:true, minlength:1
 },
@@ -27,7 +28,7 @@ minlength:5,
         validator : validator.isEmail,
         message : '{VALUE} is not a vaild email'
     }
-},*/
+},
 password:{ 
     type: String,
    required :true,

@@ -10,26 +10,50 @@ var {ObjectID} = require('mongodb');
 var fs = require('fs');
 var {mongoose} = require('./db/mongoose.js');
 var {todo}= require('./models/todo');
-
+const cors = require('cors');
 var {authenticate} = require('./middleware/authenticate');
 var {formidable} = require('formidable');
 const _ = require('lodash');
 
 var app = express();
+let http = require('http').Server(app);
+let io = require('socket.io')(http);
+
 app.use(bodyParser.json());
 
-app.use(function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  next();
-});
+
+app.use(cors({origin:'*'}));
 
 const port = process.env.PORT || 3000;
 
 app.use('/suggest',suggestRoute);
 
 app.use('/users',usersRoute);
-app.listen(port, () => {
+
+
+io.on('connection', (socket) => {
+    socket.removeAllListeners()
+  console.log('user connected');
+    socket.on('disconnect', function(){
+    console.log('user disconnected');
+  });
+  
+  socket.on('add-product', (product) => {
+   io.emit('product',product);
+  });
+  socket.on('like-product',(product)=>{
+    io.emit('like',product);
+});
+socket.on('add-comment',(comment)=>{
+    io.emit('comment',comment)
+});
+});
+
+
+
+
+
+http.listen(port, () => {
     console.log(`started at ${port}`);
 });
 

@@ -44,6 +44,9 @@ io.on('connection', (socket) => {
   socket.on('like-product',(product)=>{
     io.emit('like',product);
 });
+  socket.on('dislike-product',(product)=>{
+    io.emit('dislike',product);
+});
 socket.on('add-comment',(comment)=>{
     io.emit('comment',comment)
 });

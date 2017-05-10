@@ -15,11 +15,9 @@ Router.get('/getcomments',(req,res)=>{
 
 Router.post('/addcomment',(req,res)=>{
       const id = mongoose.Types.ObjectId(req.body.id);
-    Products.findById(id).then((product)=>{
-        product.comments.push({username:req.body.user,comment:req.body.comment});
-        product.save();
-    }).then(()=>{
-            res.send({Success:true});
+      console.log("hi");
+    Products.findByIdAndUpdate(id,{$push:{comments:{username:req.body.user,comment:req.body.comment}}}).then((product)=>{
+       res.send({Success:true});
     }).catch((err)=>{
       console.log("sorry product not found")  
     });
@@ -40,12 +38,42 @@ Router.post('/addproduct',(req,res)=>{
 
  
 });
+Router.post("/dislikeProduct",(req,res)=>{
+
+    const id = mongoose.Types.ObjectId(req.body._id);
+    const user = req.body.user;
+
+    Products.findById(id).then((product)=>{
+        product.update({$inc:{Likes:-1},$pull:{likedUsers:user}}).then((product)=>{
+          
+            
+                        res.send({success:true});
+           
+                 
+            
+           
+        })
+          
+    }).catch((err)=>{
+        res.send({success:false});
+    })
+  
+    
+});
 Router.post("/likeProduct",(req,res)=>{
 
     const id = mongoose.Types.ObjectId(req.body._id);
+    const user = req.body.user;
+
     Products.findById(id).then((product)=>{
-        product.update({$inc:{Likes:1}}).then((product)=>{
-            res.send({success:true});
+        product.update({$inc:{Likes:1},$push:{likedUsers:user}}).then((product)=>{
+          
+            
+                        res.send({success:true});
+           
+                 
+            
+           
         })
           
     }).catch((err)=>{

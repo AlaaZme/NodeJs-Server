@@ -7,7 +7,7 @@ const Router=express.Router();
 Router.get('/getcomments',(req,res)=>{
     
     const id = mongoose.Types.ObjectId(req.query.id);
-     Products.findById(id).sort('date').then((product)=>{
+     Products.findById(id).sort('-date').then((product)=>{
         res.send(product.comments)
      })
     

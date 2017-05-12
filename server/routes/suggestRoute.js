@@ -7,7 +7,7 @@ const Router=express.Router();
 Router.get('/getcomments',(req,res)=>{
     
     const id = mongoose.Types.ObjectId(req.query.id);
-     Products.findById(id).sort('-date').then((product)=>{
+     Products.findById(id).then((product)=>{
         res.send(product.comments)
      })
     
@@ -91,7 +91,7 @@ Router.post("/likeProduct",(req,res)=>{
 Router.get('/getAllProducts',(req,res)=>{
       Products.find({},(err)=>{
           
-      }).then((products)=>{
+      }).sort('date').then((products)=>{
           res.send(products);
       }).catch((err)=>{
           res.send({success:false});

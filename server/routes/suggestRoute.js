@@ -38,7 +38,7 @@ Router.post('/addproduct',(req,res)=>{
  
 });
 
-Router.delete('/deleteProduct',(req,res)=>{
+Router.post('/deleteProduct',(req,res)=>{
         const id = mongoose.Types.ObjectId(req.body.id);
     Products.remove({_id:id}).then(()=>{
         res.send({sucess:"true"});

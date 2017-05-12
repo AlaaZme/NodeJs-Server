@@ -91,7 +91,7 @@ Router.post("/likeProduct",(req,res)=>{
 Router.get('/getAllProducts',(req,res)=>{
       Products.find({},(err)=>{
           
-      }).sort('-date').then((products)=>{
+      }).sort({id:1}).then((products)=>{
           res.send(products);
       }).catch((err)=>{
           res.send({success:false});

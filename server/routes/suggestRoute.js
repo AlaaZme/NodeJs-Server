@@ -12,7 +12,6 @@ Router.get('/getcomments',(req,res)=>{
      })
     
 })
-
 Router.post('/addcomment',(req,res)=>{
       const id = mongoose.Types.ObjectId(req.body.id);
       console.log("hi");
@@ -37,6 +36,13 @@ Router.post('/addproduct',(req,res)=>{
     })
 
  
+});
+
+Router.delete('/deleteProduct',(req,res)=>{
+        const id = mongoose.Types.ObjectId(req.body.id);
+    Products.remove({_id:id}).then(()=>{
+        res.send({sucess:"true"});
+    })
 });
 Router.post("/dislikeProduct",(req,res)=>{
 

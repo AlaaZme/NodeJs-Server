@@ -4,6 +4,7 @@ const path = require('path');
 require('./config/config');
 const suggestRoute=require('./routes/suggestRoute');
 const usersRoute=require('./routes/usersRoute');
+const pushRoute=require('./routes/pushRoute');
 var express = require('express');
 var bodyParser = require('body-parser');
 var {ObjectID} = require('mongodb');
@@ -29,7 +30,7 @@ const port = process.env.PORT || 3000;
 app.use('/suggest',suggestRoute);
 
 app.use('/users',usersRoute);
-
+app.use('/push',pushRoute);
 
 io.on('connection', (socket) => {
     socket.removeAllListeners()

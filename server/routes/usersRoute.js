@@ -129,11 +129,11 @@ var id = req.params.id;
 if(!ObjectID.isValid(id)){
     return res.status(400).send();
 }
-user.findByIdAndRemove(id).then((user)=>{
+user.findByIdAndRemove(id).then((User)=>{
 
     if(!user)
       return res.status(401).send();
-      res.send({user});
+      res.send(uUser);
 }).catch((e)=>{
        res.status(402).send();
 });

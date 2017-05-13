@@ -3,7 +3,7 @@ const _ = require('lodash');
 var fs = require('fs');
 var {user}= require('../models/user');
 var {authenticate} = require('../middleware/authenticate');
-
+const mongoose = require('mongoose');
 const Router=express.Router();
 
 Router.post('/',(req,res)=>{
@@ -181,7 +181,7 @@ Router.post('/test',(req,res)=>{
  //var body = _.pick(req.body,'uname');
 const id = mongoose.Types.ObjectId(req.body.id);
  //user.findById(id).then((user)=>{
-     User.findById(id).then(()=>{
+     user.findById(id).then(()=>{
 
  res.send({success:"true"});
 }).catch((e)=>{

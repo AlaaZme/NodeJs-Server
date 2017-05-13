@@ -181,9 +181,9 @@ Router.post('/test',(req,res)=>{
  var body = _.pick(req.body,'uname');
 //const id = mongoose.Types.ObjectId(req.body.id);
  //user.findById(id).then((user)=>{
-     user.findByCredentials(body.uname).then((User)=>{
+     user.findByCredentials(body.uname).then(()=>{
 
- res.send(User);
+ res.send({success:"true"});
 }).catch((e)=>{
 res.send({success:"failed"})
 });

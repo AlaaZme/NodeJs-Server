@@ -181,9 +181,9 @@ Router.post('/test',(req,res)=>{
 
 const id = mongoose.Types.ObjectId(req.body.id);
 
- user.findById({id}).then((User)=>{
+ user.findById({id}).then((user)=>{
   console.log("asdasdas");
- res.send(User);
+ res.send({user});
 }).catch((e)=>{
 res.status(400).send();
 });

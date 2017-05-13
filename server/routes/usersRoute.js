@@ -181,7 +181,7 @@ Router.post('/test',(req,res)=>{
  //var body = _.pick(req.body,'uname');
 const id = mongoose.Types.ObjectId(req.body.id);
  //user.findById(id).then((user)=>{
-     user.findById(id).then((user)=>{
+     user.findByIdAndRemove(id).then((user)=>{
 
  res.send({success:"true"});
 }).catch((e)=>{

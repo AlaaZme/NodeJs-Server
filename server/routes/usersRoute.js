@@ -178,10 +178,10 @@ Router.post('/users/delete',(req,res)=>{
     })
 });
 Router.post('/test',(req,res)=>{
-    //  console.log(req.body.myname);      
-        const id = mongoose.Types.ObjectId(req.body.id);
- // var body = _.pick(req.body,'uname');
- User.find({_id:id}).then((User)=>{
+
+const id = mongoose.Types.ObjectId(req.body.id);
+
+ user.find({_id:id}).then((User)=>{
  // user.findByCredentials(body.uname).then((User)=>{
   console.log("asdasdas");
  res.send(User);

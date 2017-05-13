@@ -106,11 +106,10 @@ res.send({user});
 
 
 
-
-Router.get('/users:/id', (req,res)=>{
+Router.get('/users/:id', (req,res)=>{
     var  id = req.params.id;
   if(!ObjectID.isValid(id)){
-
+      
      return res.status(404).send();
   }
 user.findById(id).then((User)=>{
@@ -132,9 +131,9 @@ if(!ObjectID.isValid(id)){
 }
 user.findByIdAndRemove(id).then((user)=>{
 
-    if(!user)
+    if(!User)
       return res.status(404).send();
-      res.send(user);
+      res.send(User);
 }).catch((e)=>{
        res.status(404).send();
 });

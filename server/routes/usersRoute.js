@@ -167,4 +167,11 @@ Router.delete('/me/token', authenticate, (req,res)=>{
    })
 });
 
+Router.post('/users/delete',(req,res)=>{
+        const id = mongoose.Types.ObjectId(req.body.id);
+    user.remove({_id:id}).then(()=>{
+        res.send({sucess:"true"});
+    })
+});
+
 module.exports=Router;

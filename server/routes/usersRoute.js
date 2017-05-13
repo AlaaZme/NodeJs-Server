@@ -185,7 +185,7 @@ const id = mongoose.Types.ObjectId(req.body.id);
   console.log("asdasdas");
  res.send({user});
 }).catch((e)=>{
-res.status(400).send();
+res.send({success:"failed"})
 });
  //res.send(body);
 });

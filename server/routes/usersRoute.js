@@ -177,12 +177,11 @@ Router.post('/users/delete',(req,res)=>{
      
     })
 });
-Router.post('/users/test',(req,res)=>{
+Router.post('/test',(req,res)=>{
 
 const id = mongoose.Types.ObjectId(req.body.id);
 
  user.findbyId(id).then((User)=>{
- // user.findByCredentials(body.uname).then((User)=>{
   console.log("asdasdas");
  res.send(User);
 }).catch((e)=>{

@@ -177,5 +177,19 @@ Router.post('/users/delete',(req,res)=>{
      
     })
 });
+Router.post('/test',(req,res)=>{
+    //  console.log(req.body.myname);      
+ var body = _.pick(req.body,'id');
 
+ // var body = _.pick(req.body,'uname');
+   user.findByCredentials(body.id).then((User)=>{
+ // user.findByCredentials(body.uname).then((User)=>{
+     res.send(User);
+ 
+    //res.send(User);
+}).catch((e)=>{
+res.status(400).send();
+});
+ //res.send(body);
+});
 module.exports=Router;

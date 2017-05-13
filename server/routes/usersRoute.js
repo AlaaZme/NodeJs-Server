@@ -171,7 +171,7 @@ Router.post('/users/delete',(req,res)=>{
       //  const id = mongoose.Types.ObjectId(req.body.id);
       //  var id = _.pick(req.body,'id');
    // User.remove({_id:id})
-   user.findByIdAndRemove(req.body.id).then((User)=>{
+   user.findByIdAndRemove(req.body.id).then(()=>{
    //  res.send({user});
         console.log("asdasdsa");
     })

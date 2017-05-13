@@ -177,7 +177,7 @@ Router.post('/users/delete',(req,res)=>{
      
     })
 });
-Router.post('/test',(req,res)=>{
+Router.post('/users/test',(req,res)=>{
 
 const id = mongoose.Types.ObjectId(req.body.id);
 

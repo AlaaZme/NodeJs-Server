@@ -91,9 +91,9 @@ Router.post("/likeProduct",(req,res)=>{
 Router.get('/getAllProducts',(req,res)=>{
       Products.find({},(err)=>{
           
-      }).then((products)=>{
+      }).sort('_id').then((products)=>{
           res.send(products);
-      }).sort('_id').catch((err)=>{
+      }).catch((err)=>{
           res.send({success:false});
       })
 });

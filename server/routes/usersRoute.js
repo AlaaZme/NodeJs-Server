@@ -112,13 +112,13 @@ Router.get('/users/:id', (req,res)=>{
 
      return res.status(404).send();
   }
-user.findById(id).then((user)=>{
-    if(!user){
+user.findById(id).then((User)=>{
+    if(!User){
    console.log("wrong username");
     }
 else{
-    res.send(user);
-    console.log("user by id ",user);
+    res.send(uUser);
+    console.log("user by id ",User);
 }
 }).catch((e)=>console.log(e));
 });

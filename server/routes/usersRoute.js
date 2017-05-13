@@ -109,7 +109,7 @@ res.send({user});
 Router.get('/users/:id', (req,res)=>{
     var  id = req.params.id;
   if(!ObjectID.isValid(id)){
-      
+
      return res.status(404).send();
   }
 user.findById(id).then((User)=>{
@@ -127,15 +127,15 @@ else{
 Router.delete('/users/:id',(req,res)=>{
 var id = req.params.id;
 if(!ObjectID.isValid(id)){
-    return res.status(400).send();
+    return res.status(404).send();
 }
-user.findByIdAndRemove(id).then((User)=>{
+user.findByIdAndRemove(id).then((user)=>{
 
-    if(!User)
-      return res.status(405).send();
-      res.send(User);
+    if(!user)
+      return res.status(404).send();
+      res.send({user});
 }).catch((e)=>{
-       res.status(401).send();
+       res.status(404).send();
 });
 
 });

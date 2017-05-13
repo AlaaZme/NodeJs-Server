@@ -127,15 +127,15 @@ else{
 Router.delete('/users/:id',(req,res)=>{
 var id = req.params.id;
 if(!ObjectID.isValid(id)){
-    return res.status(404).send();
+    return res.status(400).send();
 }
 user.findByIdAndRemove(id).then((user)=>{
 
     if(!user)
-      return res.status(404).send();
+      return res.status(401).send();
       res.send({user});
 }).catch((e)=>{
-       res.status(404).send();
+       res.status(402).send();
 });
 
 });

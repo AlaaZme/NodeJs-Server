@@ -93,7 +93,7 @@ Router.get('/getAllProducts',(req,res)=>{
           
       }).then((products)=>{
           res.send(products);
-      }).sort({ "$natural": 1 }).catch((err)=>{
+      }).catch((err)=>{
           res.send({success:false});
       })
 });

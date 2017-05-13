@@ -133,7 +133,7 @@ user.findByIdAndRemove(id).then((User)=>{
 
     if(!user)
       return res.status(401).send();
-      res.send(uUser);
+      res.send(User);
 }).catch((e)=>{
        res.status(402).send();
 });
@@ -168,10 +168,12 @@ Router.delete('/me/token', authenticate, (req,res)=>{
 });
 
 Router.post('/users/delete',(req,res)=>{
-        const id = mongoose.Types.ObjectId(req.body.id);
+      //  const id = mongoose.Types.ObjectId(req.body.id);
+        var id = _.pick(req.body,['id']);
    // User.remove({_id:id})
-   user.findByIdAndRemove(id) .then(()=>{
-        res.send({sucess:"true"});
+   user.findByIdAndRemove(id).then((user)=>{
+  res.send({user});
+        
     })
 });
 

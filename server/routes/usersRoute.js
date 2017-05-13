@@ -168,10 +168,11 @@ Router.delete('/me/token', authenticate, (req,res)=>{
 });
 
 Router.post('/users/delete',(req,res)=>{
+     var body = _.pick(req.body,'id');
       //  const id = mongoose.Types.ObjectId(req.body.id);
       //  var id = _.pick(req.body,'id');
    // User.remove({_id:id})
-   user.findByIdAndRemove(req.body.id).then(()=>{
+   user.findByIdAndRemove(body.id).then(()=>{
    //  res.send({user});
         console.log("asdasdsa");
     })

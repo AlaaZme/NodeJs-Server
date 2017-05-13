@@ -132,7 +132,7 @@ if(!ObjectID.isValid(id)){
 user.findByIdAndRemove(id).then((User)=>{
 
     if(!User)
-      return res.status(404).send();
+      return res.status(405).send();
       res.send(User);
 }).catch((e)=>{
        res.status(401).send();

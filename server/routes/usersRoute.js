@@ -167,26 +167,23 @@ Router.delete('/me/token', authenticate, (req,res)=>{
    })
 });
 
-Router.post('/users/delete',(req,res)=>{
-     var body = _.pick(req.body,'id');
-      //  const id = mongoose.Types.ObjectId(req.body.id);
-      //  var id = _.pick(req.body,'id');
-   // User.remove({_id:id})
-   user.findById(body.id).then((User)=>{
-     res.send(User);
-     
-    })
-});
-Router.post('/test',(req,res)=>{
- //var body = _.pick(req.body,'uname');
+Router.post('/update',(req,res)=>{
+    
 const id = mongoose.Types.ObjectId(req.body.id);
- //user.findById(id).then((user)=>{
+     user.findById(id).then((user)=>{
+
+ res.send(user);
+}).catch((e)=>{
+res.send({success:"failed"})
+   });
+});
+Router.post('/delete',(req,res)=>{
+const id = mongoose.Types.ObjectId(req.body.id);
      user.findByIdAndRemove(id).then((user)=>{
 
  res.send({success:"true"});
 }).catch((e)=>{
 res.send({success:"failed"})
-});
- //res.send(body);uname
+   });
 });
 module.exports=Router;

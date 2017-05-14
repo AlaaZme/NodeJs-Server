@@ -170,10 +170,10 @@ Router.delete('/me/token', authenticate, (req,res)=>{
 Router.post('/update',(req,res)=>{
     
 const id = mongoose.Types.ObjectId(req.body.id);
-     user.findById(id).then((user)=>{
-         if(!user)
-            res.send({success:"no such user"});
- res.send({success:"true"});
+     user.findById(id).then((User)=>{
+      //   if(!user)
+            //res.send({success:"no such user"});
+ res.send(User);
 }).catch((e)=>{
 res.send({success:"failed"})
    });

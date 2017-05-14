@@ -89,9 +89,7 @@ console.log(req.query);
     //res.send(User);
 
 });
-// GET todos
 Router.get('/', (req,res)=>{
-//console.log(req.query);
   user.find().then((user)=>{
    if(!user){
   return res.status(404).send();
@@ -140,21 +138,17 @@ user.findByIdAndRemove(id).then((User)=>{
 
 });
 
-Router.post('/login',(req,res)=>{
-    //  console.log(req.body.myname);      
+Router.post('/login',(req,res)=>{ 
  var body = _.pick(req.body,['uname','password']);
 
- // var body = _.pick(req.body,'uname');
    user.findByCredentials(body.uname,body.password).then((User)=>{
- // user.findByCredentials(body.uname).then((User)=>{
+
       return User.generateAuthToken().then((token)=>{
          res.header('x-auth',token).send(User);
       });
-    //res.send(User);
 }).catch((e)=>{
 res.status(400).send();
 });
- //res.send(body);
 });
 Router.get('/me', authenticate,  (req,res)=>{
     res.send(req.User);
@@ -171,8 +165,7 @@ Router.post('/update',(req,res)=>{
     
 const id = mongoose.Types.ObjectId(req.body.id);
      user.findById(id).then((User)=>{
-      //   if(!user)
-            //res.send({success:"no such user"});
+
  res.send(User);
 }).catch((e)=>{
 res.send({success:"failed"})

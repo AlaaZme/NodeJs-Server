@@ -171,8 +171,9 @@ Router.post('/update',(req,res)=>{
     
 const id = mongoose.Types.ObjectId(req.body.id);
      user.findById(id).then((user)=>{
-
- res.send(user);
+         if(!user)
+            res.send({success:"no such user"});
+ res.send({success:"true"});
 }).catch((e)=>{
 res.send({success:"failed"})
    });

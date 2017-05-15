@@ -173,7 +173,7 @@ var User = new user({
                 authen: req.body.authen
 });    
 const id = mongoose.Types.ObjectId(req.body.id);
-     user.findByIdAndUpdate(id,User).then((User)=>{
+     user.findByIdAndUpdate(id,User,option,callback).then((User)=>{
 
 res.send({success:"succes"})
 }).catch((e)=>{

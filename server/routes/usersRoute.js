@@ -5,7 +5,7 @@ var {user}= require('../models/user');
 var {authenticate} = require('../middleware/authenticate');
 const mongoose = require('mongoose');
 const Router=express.Router();
-
+const bcrypt = require('bcryptjs');
 Router.post('/',(req,res)=>{
 
    console.log("in server register");
@@ -200,7 +200,6 @@ var tempu = new user({
    bcrypt.genSalt(10,(err,salt)=>{
            bcrypt.hash(tempu.password,salt,(err,hash)=>{
             tempu.password = hash;
-            next();
 
            });
    });

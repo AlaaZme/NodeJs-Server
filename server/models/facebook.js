@@ -9,4 +9,4 @@ const facebookModel = new Schema ({
 });
 
 const Facebook=mongoose.model('facebook',facebookModel);
-module.exports(Facebook);
+module.exports=Facebook;

@@ -5,6 +5,7 @@ require('./config/config');
 const suggestRoute=require('./routes/suggestRoute');
 const usersRoute=require('./routes/usersRoute');
 const pushRoute=require('./routes/pushRoute');
+const facebookRoute = require('./routes/facebookRoute')
 var express = require('express');
 var bodyParser = require('body-parser');
 var {ObjectID} = require('mongodb');
@@ -31,7 +32,7 @@ app.use('/suggest',suggestRoute);
 
 app.use('/users',usersRoute);
 app.use('/push',pushRoute);
-
+app.use('/facebook',facebookRoute);
 io.on('connection', (socket) => {
     socket.removeAllListeners()
   console.log('user connected');

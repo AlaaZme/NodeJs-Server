@@ -164,7 +164,7 @@ Router.delete('/me/token', authenticate, (req,res)=>{
 Router.post('/update',(req,res)=>{
     
 const id = mongoose.Types.ObjectId(req.body.id);
-     user.findById(id).then((User)=>{
+     user.findByIdAndUpdate(id,req.body,).then((User)=>{
 
  res.send(User);
 }).catch((e)=>{

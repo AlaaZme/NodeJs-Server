@@ -163,7 +163,7 @@ Router.delete('/me/token', authenticate, (req,res)=>{
 
 Router.post('/update',(req,res)=>{
 var tempu = new user({
-    
+     _id: mongoose.Types.ObjectId(req.body.id),
      uname : req.body.uname,
     email : req.body.email,
     fName : req.body.fName,
@@ -175,7 +175,7 @@ var tempu = new user({
 
 
 //const id = mongoose.Types.ObjectId(req.body.id);
-     user.findByIdAndUpdate(req.body.id,tempu, {new: false},   function(err,tempu){
+     user.findByIdAndUpdate(req.body.id,tempu, {new: true},   function(err,tempu){
             if(err){
                 res.json({error :err}) ; 
             } else{

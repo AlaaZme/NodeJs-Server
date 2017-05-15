@@ -9,9 +9,13 @@ Router.get('/getAll',(req,res)=>{
   })
 });
 Router.post('/addFacebook',(req,res)=>{
-    
+    for(face of req.body){
+const facebook = new Facebook(face);
+    facebook.save().then(()=>{
+        res.send({success:true});
+    })
 
-    res.send(req.body);
+    }
     
     
 })

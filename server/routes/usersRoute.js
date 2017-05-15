@@ -174,8 +174,8 @@ var tempu = new user({
 });    
 
 
-//const id = mongoose.Types.ObjectId(req.body.id);
-     user.findByIdAndUpdate(req.body.id,tempu, {new: true},   function(err,tempu){
+const id = mongoose.Types.ObjectId(req.body.id);
+     user.findByIdAndUpdate(id,tempu, {new: true},   function(err,tempu){
             if(err){
                 res.json({error :err}) ; 
             } else{

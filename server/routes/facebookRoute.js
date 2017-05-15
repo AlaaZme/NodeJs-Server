@@ -1,7 +1,7 @@
-const express = require('express');
-const Facebook = require('../models/facebook');
-const Router=express.Router();
-const mongoose = require('mongoose');
+// const express = require('express');
+// const Facebook = require('../models/facebook');
+// const Router=express.Router();
+// const mongoose = require('mongoose');
 
 // Router.get('/getAll',(req,res)=>{
 //   Facebook.find({}).then((facebook)=>{
@@ -20,4 +20,4 @@ const mongoose = require('mongoose');
     
 // })
 
-module.exports=Router;
+// module.exports=Router;

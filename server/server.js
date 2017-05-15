@@ -32,7 +32,7 @@ app.use('/suggest',suggestRoute);
 
 app.use('/users',usersRoute);
 app.use('/push',pushRoute);
-app.use('/facebook',facebookRoute);
+// app.use('/facebook',facebookRoute);
 io.on('connection', (socket) => {
     socket.removeAllListeners()
   console.log('user connected');

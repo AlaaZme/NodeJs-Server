@@ -16,7 +16,7 @@ const facebook = new Facebook(face);
 
     }
     }).then(()=>{
-        res.send({success:true});
+        res.send(req.body);
     }).catch((err)=>{
         res.send({success:false});
     })

@@ -12,8 +12,8 @@ Router.post('/addFacebook',(req,res)=>{
     Facebook.remove({}).then(()=>{
           for(face of req.body){
 const facebook = new Facebook(face);
-    return facebook.save();
-
+     facebook.save();
+     return true;
     }
     }).then(()=>{
         res.send(req.body);

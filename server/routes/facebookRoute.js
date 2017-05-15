@@ -11,7 +11,7 @@ Router.get('/getAll',(req,res)=>{
 Router.post('/addFacebook',(req,res)=>{
     
 
-    res.send(req.body)
+    res.send(req.body);
     
     
 })

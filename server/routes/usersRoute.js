@@ -197,7 +197,16 @@ var tempu = new user({
      _id: req.body.id,
   password : req.body.password
 }); 
-  tempu.generateAuthToken();
+    if( tempu.isModified('password')){
+       bcrypt.genSalt(10,(err,salt)=>{
+           bcrypt.hash(tempu.password,salt,(err,hash)=>{
+            tempu.password = hash;
+            next();
+
+           });
+       });
+   }
+
 
 const id = mongoose.Types.ObjectId(req.body.id);
      user.findByIdAndUpdate(id,tempu, {new: true},   function(err,tempu){

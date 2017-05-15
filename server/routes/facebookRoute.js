@@ -4,3 +4,5 @@ const Router=express.Router();
 Router.get('/getAll',(req,res)=>{
     res.send({success:true})
 });
+
+module.exports(Router);

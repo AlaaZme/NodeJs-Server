@@ -8,16 +8,16 @@ const mongoose = require('mongoose');
 //         res.send({su});
 //   })
 // });
-Router.post('/addFacebook',(req,res)=>{
-    for(face of req.body){
-const facebook = new Facebook(face);
-    facebook.save().then(()=>{
-        res.send({success:true});
-    })
+// Router.post('/addFacebook',(req,res)=>{
+//     for(face of req.body){
+// const facebook = new Facebook(face);
+//     facebook.save().then(()=>{
+//         res.send({success:true});
+//     })
 
-    }
+    // }
     
     
-})
+// })
 
 module.exports=Router;

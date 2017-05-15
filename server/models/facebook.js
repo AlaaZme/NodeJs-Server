@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const Schema = mongoose.Schema();
+const Schema = mongoose.Schema;
 
 const facebookModel = new Schema ({
-    name:string,
-    message:string,
-    imageUrl:string
+    name:String,
+    message:String,
+    imageUrl:String
 });
 
 const Facebook=mongoose.model('facebook',facebookModel);

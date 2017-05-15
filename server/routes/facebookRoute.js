@@ -13,8 +13,10 @@ Router.post('/addFacebook',(req,res)=>{
           for(face of req.body){
 const facebook = new Facebook(face);
      facebook.save();
-     return true;
+     
+
     }
+    return true;
     }).then(()=>{
         res.send(req.body);
     }).catch((err)=>{

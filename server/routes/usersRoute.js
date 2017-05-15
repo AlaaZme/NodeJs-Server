@@ -163,7 +163,7 @@ Router.delete('/me/token', authenticate, (req,res)=>{
 
 Router.post('/update',(req,res)=>{
 var tempu = new user({
-     _id: mongoose.Types.ObjectId(req.body.id),
+     _id: req.body.id,
      uname : req.body.uname,
     email : req.body.email,
     fName : req.body.fName,

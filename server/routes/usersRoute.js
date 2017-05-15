@@ -169,7 +169,6 @@ var tempu = new user({
     fName : req.body.fName,
       PhoneNo: req.body.PhoneNo,
            Gender: req.body.Gender,
-              email: req.body.email,
                 authen: req.body.authen
 });    
 

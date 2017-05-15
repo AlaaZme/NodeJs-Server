@@ -175,7 +175,7 @@ var User = new user({
 const id = mongoose.Types.ObjectId(req.body.id);
      user.findByIdAndUpdate(id,User).then((User)=>{
 
-res.send({success:"succes"})
+res.send(User)
 }).catch((e)=>{
 res.send({success:"failed"})
    });

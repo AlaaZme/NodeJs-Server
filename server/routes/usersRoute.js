@@ -167,13 +167,10 @@ var User = new user({
      uname : req.body.uname,
     email : req.body.email,
     fName : req.body.fName,
-      lName : req.body.lName,
       PhoneNo: req.body.PhoneNo,
            Gender: req.body.Gender,
               email: req.body.email,
-                authen: req.body.authen,
-    password : req.body.password
-    
+                authen: req.body.authen
 });    
 const id = mongoose.Types.ObjectId(req.body.id);
      user.findByIdAndUpdate(id,User).then((User)=>{

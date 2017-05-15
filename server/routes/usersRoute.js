@@ -191,4 +191,26 @@ const id = mongoose.Types.ObjectId(req.body.id);
 res.send({success:"failed"})
    });
 });
+
+outer.post('/rstPas',(req,res)=>{
+var tempu = new user({
+     _id: req.body.id,
+     uname : req.body.uname,
+    email : req.body.email,
+    fName : req.body.fName,
+      PhoneNo: req.body.PhoneNo,
+           Gender: req.body.Gender,
+                authen: req.body.authen
+});    
+
+
+const id = mongoose.Types.ObjectId(req.body.id);
+     user.findByIdAndUpdate(id,{password:'1234'}, {new: true},   function(err,tempu){
+            if(err){
+                res.json({error :err}) ; 
+            } else{
+                res.send(tempu) ; 
+            }
+        }); 
+});
 module.exports=Router;

@@ -161,16 +161,28 @@ Router.delete('/me/token', authenticate, (req,res)=>{
    })
 });
 
-/*Router.post('/update',(req,res)=>{
+Router.post('/update',(req,res)=>{
+var User = new user({
     
+     uname : req.body.uname,
+    email : req.body.email,
+    fName : req.body.fName,
+      lName : req.body.lName,
+      PhoneNo: req.body.PhoneNo,
+           Gender: req.body.Gender,
+              email: req.body.email,
+                authen: req.body.authen,
+    password : req.body.password
+    
+});    
 const id = mongoose.Types.ObjectId(req.body.id);
-     user.findByIdAndUpdate(id,req.body).then((User)=>{
+     user.findByIdAndUpdate(id,User).then((User)=>{
 
- res.send(User);
+res.send({success:"succes"})
 }).catch((e)=>{
 res.send({success:"failed"})
    });
-});*/
+});
 Router.post('/delete',(req,res)=>{
 const id = mongoose.Types.ObjectId(req.body.id);
      user.findByIdAndRemove(id).then((user)=>{

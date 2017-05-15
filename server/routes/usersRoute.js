@@ -161,16 +161,16 @@ Router.delete('/me/token', authenticate, (req,res)=>{
    })
 });
 
-Router.post('/update',(req,res)=>{
+/*Router.post('/update',(req,res)=>{
     
 const id = mongoose.Types.ObjectId(req.body.id);
-     user.findByIdAndUpdate(id,req.body,).then((User)=>{
+     user.findByIdAndUpdate(id,req.body).then((User)=>{
 
  res.send(User);
 }).catch((e)=>{
 res.send({success:"failed"})
    });
-});
+});*/
 Router.post('/delete',(req,res)=>{
 const id = mongoose.Types.ObjectId(req.body.id);
      user.findByIdAndRemove(id).then((user)=>{

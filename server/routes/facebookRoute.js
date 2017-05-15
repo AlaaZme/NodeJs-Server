@@ -1,5 +1,5 @@
 const express = require('express');
-const Facebook = require('../models/suggestAProduct');
+const Facebook = require('../models/facebook');
 const Router=express.Router();
 const mongoose = require('mongoose');
 

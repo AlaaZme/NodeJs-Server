@@ -197,7 +197,7 @@ var tempu = new user({
      _id: req.body.id,
   password : req.body.password
 }); 
-    if( tempu.isModified('password')){
+
        bcrypt.genSalt(10,(err,salt)=>{
            bcrypt.hash(tempu.password,salt,(err,hash)=>{
             tempu.password = hash;
@@ -205,7 +205,6 @@ var tempu = new user({
 
            });
        });
-   }
 
 
 const id = mongoose.Types.ObjectId(req.body.id);

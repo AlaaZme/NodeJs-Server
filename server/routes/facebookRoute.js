@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 
 Router.get('/getAll',(req,res)=>{
   Facebook.find({}).then((facebook)=>{
-        res.send({success:true});
+        res.send(facebook);
   })
 });
 Router.post('/addFacebook',(req,res)=>{

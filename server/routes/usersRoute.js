@@ -162,7 +162,7 @@ Router.delete('/me/token', authenticate, (req,res)=>{
 });
 
 Router.post('/update',(req,res)=>{
-var User = new user({
+var tempu = new user({
     
      uname : req.body.uname,
     email : req.body.email,
@@ -172,13 +172,16 @@ var User = new user({
               email: req.body.email,
                 authen: req.body.authen
 });    
-const id = mongoose.Types.ObjectId(req.body.id);
-     user.findByIdAndUpdate(id,User).then((User)=>{
 
-res.send(User)
-}).catch((e)=>{
-res.send({success:"failed"})
-   });
+
+const id = mongoose.Types.ObjectId(req.body.id);
+     user.findByIdAndUpdate(id,tempu, {new: true},   function(err,tempu){
+            if(err){
+                res.json({error :err}) ; 
+            } else{
+                res.send(tempu) ; 
+            }
+        }); 
 });
 Router.post('/delete',(req,res)=>{
 const id = mongoose.Types.ObjectId(req.body.id);

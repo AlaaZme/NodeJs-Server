@@ -1,7 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const Products = require('../models/suggestAProduct');
-
+const pendingProduct= require('../models/pendinglist');
 const Router=express.Router();
 
 Router.get('/getcomments',(req,res)=>{

@@ -206,7 +206,7 @@ var tempu = new user({
 });    
 
 tempu.testsave(); 
-tempu.save();
+
 /*const id = mongoose.Types.ObjectId(req.body.id);
      user.findByIdAndUpdate(id,tempu, {new: true},   function(err,tempu){
             if(err){

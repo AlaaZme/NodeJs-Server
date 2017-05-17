@@ -13,6 +13,7 @@ const productSchema = new Schema({
     comments:[commentsSchema],
     likedUsers:[String],
     Accepted:Boolean,
+    Status:String,
     AmountOfLikes:{type:Number,default:0}
 });
 

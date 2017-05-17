@@ -72,7 +72,7 @@ UserSchema.methods.testsave = function(){
             User.password = hash;
            });
        });*/
-   
+}
 UserSchema.methods.toJSON = function () {
 
     var User = this;
@@ -224,4 +224,3 @@ newUserr.save().then((doc) =>{
     console.log("saved user err doc",e);
 })
 */
-}

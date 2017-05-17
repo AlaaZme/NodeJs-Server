@@ -199,10 +199,8 @@ var tempu = new user({
 }); 
 
    bcrypt.genSalt(10,(err,salt)=>{
-           bcrypt.hash(tempu.password,salt,(err,hash)=>{
+           bcrypt.hash(req.body.password,salt,(err,hash)=>{
             tempu.password = hash;
-        
-
            });
        });
        console.log(hash);

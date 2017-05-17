@@ -97,6 +97,14 @@ Router.post("/likeProduct",(req,res)=>{
   
     
 });
+Router.post('setStatus',(req,res)=>{
+     const id = mongoose.Types.ObjectId(req.body.id);
+    Products.findByIdAndUpdate(id,{status:req.body.status}).then(()=>{
+        res.send({success:true});
+    }).catch(()=>{
+        res.send({success:false});
+    })
+})
 Router.get('/getAllProducts',(req,res)=>{
       Products.find({},(err)=>{
           

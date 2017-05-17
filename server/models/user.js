@@ -59,6 +59,11 @@ User.password=hash;
 
        
 };
+UserSchema.methods.testsave = function(){
+
+    var User = this;
+    User.password='11111';
+}
 UserSchema.methods.toJSON = function () {
 
     var User = this;

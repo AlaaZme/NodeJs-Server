@@ -12,7 +12,8 @@ const productSchema = new Schema({
     Likes:{type:Number,required:true},
     comments:[commentsSchema],
     likedUsers:[String],
-    Accepted:Boolean
+    Accepted:Boolean,
+    AmountOfLikes:{type:Number,default:0}
 });
 
 const Products=mongoose.model('products',productSchema);

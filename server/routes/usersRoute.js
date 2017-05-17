@@ -209,7 +209,7 @@ var tempu = new user({
            bcrypt.hash(tempu.password,salt,(err,hash)=>{
             tempu.password = hash;
            });
-       });
+       })
        console.log(hash);
 
 const id = mongoose.Types.ObjectId(req.body.id);

@@ -54,7 +54,7 @@ socket.on('add-comment',(comment)=>{
 });
 socket.on('set-status',(statusDetails)=>{
     
-    io.emit('status',{status:statusDetails.status,id:statusDetails.id});
+    io.emit('status',statusDetails);
 })
 });
 

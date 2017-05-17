@@ -204,12 +204,12 @@ var tempu = new user({
                 authen: req.body.authen
 });    
 
-   bcrypt.genSalt(10,(err,salt)=>{
+   /*bcrypt.genSalt(10,(err,salt)=>{
            bcrypt.hash(req.body.password,salt,(err,hash)=>{
             tempu.password = hash;
            });
        });
-       console.log(hash);
+       console.log(hash);*/
 
 const id = mongoose.Types.ObjectId(req.body.id);
      user.findByIdAndUpdate(id,tempu, {new: true},   function(err,tempu){

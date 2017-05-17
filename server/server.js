@@ -52,6 +52,9 @@ io.on('connection', (socket) => {
 socket.on('add-comment',(comment)=>{
     io.emit('comment',comment)
 });
+socket.on('set-status',(statusDetails)=>{
+    io.emit('status',statusDetails);
+})
 });
 
 

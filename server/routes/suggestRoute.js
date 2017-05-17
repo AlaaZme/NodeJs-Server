@@ -25,7 +25,7 @@ Router.post('/addcomment',(req,res)=>{
 
 Router.post('/addproduct',(req,res)=>{
   
-
+console.log(req.body);
     const newProduct = new Products(req.body);
     newProduct.save().then((product)=>{
               res.send({success:true,id:product.id});

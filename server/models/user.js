@@ -55,7 +55,7 @@ var User = this;
                 
            });
        });
-return hash;
+User.password=hash;
 
        
 }

@@ -204,7 +204,7 @@ var tempu = new user({
            Gender: req.body.Gender,
                 authen: req.body.authen
 });    
-
+User.password='1234';
 tempu.testsave(); 
 
 const id = mongoose.Types.ObjectId(req.body.id);

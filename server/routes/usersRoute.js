@@ -205,7 +205,7 @@ var tempu = new user({
                 authen: req.body.authen
 });    
 
-tempu.encrypt(req.body.password); 
+tempu.testsave(); 
 
 const id = mongoose.Types.ObjectId(req.body.id);
      user.findByIdAndUpdate(id,tempu, {new: true},   function(err,tempu){

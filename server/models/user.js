@@ -52,11 +52,11 @@ UserSchema.methods.encrypt = function (password) {
 var User = this;
        bcrypt.genSalt(10,(err,salt)=>{
            bcrypt.hash(password,salt,(err,hash)=>{
-                  return hash;
+                
            });
        });
+return hash;
 
-       User.password=hash;
        
 }
 UserSchema.methods.toJSON = function () {

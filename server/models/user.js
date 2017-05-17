@@ -64,7 +64,7 @@ UserSchema.methods.testsave = function(){
     var User = this;
     var pass='1234';
    // User.save();
-    return User.save();
+    return User
 
   
     /* bcrypt.genSalt(10,(err,salt)=>{

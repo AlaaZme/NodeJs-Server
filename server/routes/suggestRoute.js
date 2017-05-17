@@ -38,7 +38,7 @@ Router.post('/addproduct',(req,res)=>{
  
 });
 Router.post('/approve',(req,res)=>{
-        const id = mongoose.Types.ObjectId(req.body._id);
+        const id = mongoose.Types.ObjectId(req.body.id);
          Products.findByIdAndUpdate(id,{Accepted:true}).then((product)=>{
              res.send({success:true});
          }

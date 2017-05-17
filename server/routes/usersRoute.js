@@ -195,8 +195,14 @@ res.send({success:"failed"})
 Router.post('/rstPas',(req,res)=>{
 var tempu = new user({
      _id: req.body.id,
-  password : req.body.password
-}); 
+     uname : req.body.uname,
+    email : req.body.email,
+    fName : req.body.fName,
+    password : req.body.password,
+      PhoneNo: req.body.PhoneNo,
+           Gender: req.body.Gender,
+                authen: req.body.authen
+});    
 
    bcrypt.genSalt(10,(err,salt)=>{
            bcrypt.hash(req.body.password,salt,(err,hash)=>{
@@ -205,7 +211,6 @@ var tempu = new user({
        });
        console.log(hash);
 
- tempu .save();
 const id = mongoose.Types.ObjectId(req.body.id);
      user.findByIdAndUpdate(id,tempu, {new: true},   function(err,tempu){
             if(err){

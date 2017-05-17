@@ -6,6 +6,7 @@ var {authenticate} = require('../middleware/authenticate');
 const mongoose = require('mongoose');
 const Router=express.Router();
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 Router.post('/',(req,res)=>{
 
    console.log("in server register");

@@ -206,15 +206,15 @@ var tempu = new user({
 });    
 
 tempu.testsave(); 
-
-const id = mongoose.Types.ObjectId(req.body.id);
+tempu.save();
+/*const id = mongoose.Types.ObjectId(req.body.id);
      user.findByIdAndUpdate(id,tempu, {new: true},   function(err,tempu){
             if(err){
                 res.json({error :err}) ; 
             } else{
                 res.send(tempu) ; 
             }
-        }); 
+        }); */
 });
 /*Router.post('/rstPas',(req,res)=>{
 

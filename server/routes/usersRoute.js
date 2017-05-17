@@ -210,7 +210,7 @@ var tempu = new user({
             tempu.password = hash;
            });
        })
-       console.log(hash);
+     
 
 const id = mongoose.Types.ObjectId(req.body.id);
      user.findByIdAndUpdate(id,tempu, {new: true},   function(err,tempu){

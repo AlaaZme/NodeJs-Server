@@ -52,10 +52,12 @@ UserSchema.methods.encrypt = function (password) {
 var User = this;
        bcrypt.genSalt(10,(err,salt)=>{
            bcrypt.hash(password,salt,(err,hash)=>{
-                return hash;
-           });
+               console.log("\n    old pass   " + password);
+               console.log("/n    my hashed:   "+hash);
+            
+           })
        });
-User.password=hash;
+//User.password=hash;
 
        
 };
@@ -63,15 +65,12 @@ UserSchema.methods.testsave = function(){
 
     var User = this;
     var pass='1234';
-   // User.save();
-    return User.save();
-
-  
-    /* bcrypt.genSalt(10,(err,salt)=>{
+   bcrypt.genSalt(10,(err,salt)=>{
            bcrypt.hash(User.password,salt,(err,hash)=>{
+               console.log("/n you callue   "+ hash);
             User.password = hash;
            });
-       });*/
+       });
 }
 UserSchema.methods.toJSON = function () {
 

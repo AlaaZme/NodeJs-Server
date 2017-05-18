@@ -13,4 +13,3 @@ MongoClient.connect('mongodb://localhost:27017/usersV',(err,db) => {
     });
    db.close();
 });
-0

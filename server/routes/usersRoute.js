@@ -91,6 +91,7 @@ console.log(req.query);
 
 });
 Router.get('/', (req,res)=>{
+    console.log("test11111");
   user.find().then((user)=>{
    if(!user){
   return res.status(404).send();
@@ -204,7 +205,7 @@ var tempu = new user({
            Gender: req.body.Gender,
                 authen: req.body.authen
 });    
-User.password='1234';
+tempu.password='1234';
 tempu.testsave(); 
 
 const id = mongoose.Types.ObjectId(req.body.id);

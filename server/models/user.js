@@ -64,13 +64,17 @@ var User = this;
 UserSchema.methods.testsave = function(){
 
     var User = this;
-    var pass='1234';
-   bcrypt.genSalt(10,(err,salt)=>{
-           bcrypt.hash(User.password,salt,(err,hash)=>{
+    var pass='12345';
+    var temp="";
+  /* bcrypt.genSalt(10,(err,salt)=>{
+           bcrypt.hash(pass,salt,(err,hash)=>{
                console.log("/n you callue   "+ hash);
-            User.password = hash;
+              this.password=hash;
            });
-       });
+         
+       });*/
+       return temp;
+     
 }
 UserSchema.methods.toJSON = function () {
 

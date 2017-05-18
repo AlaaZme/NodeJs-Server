@@ -195,7 +195,7 @@ res.send({success:"failed"})
 });
 
 Router.post('/rstPas',(req,res)=>{
-var tempu = new user({
+  var tempu = new user({
      _id: req.body.id,
      uname : req.body.uname,
     email : req.body.email,
@@ -204,29 +204,24 @@ var tempu = new user({
       PhoneNo: req.body.PhoneNo,
            Gender: req.body.Gender,
                 authen: req.body.authen
-});    
+}); 
 tempu.password='1234';
-tempu.testsave(); 
-
-const id = mongoose.Types.ObjectId(req.body.id);
+ bcrypt.genSalt(10,(err,salt)=>{
+           bcrypt.hash(tempu.password,salt,(err,hash)=>{
+              tempu.password=hash;
+           const id = mongoose.Types.ObjectId(req.body.id);
      user.findByIdAndUpdate(id,tempu, {new: true},   function(err,tempu){
             if(err){
                 res.json({error :err}) ; 
             } else{
                 res.send(tempu) ; 
             }
-        }); 
-});
-/*Router.post('/rstPas',(req,res)=>{
+        });                
+   });
+ 
+  })
 
-const id = mongoose.Types.ObjectId(req.body.id);
-     user.findByIdAndUpdate(id,{password:'1234'}, {new: true},   function(err,tempu){
-            if(err){
-                res.json({error :err}) ; 
-            } else{
-                res.send(tempu) ; 
-            }
-        }); 
-});*/
+});
+
    
 module.exports=Router;

@@ -137,7 +137,7 @@ user.findByIdAndRemove(id).then((User)=>{
 
 });
 
-/*Router.post('/autologin',(req,res)=>{
+Router.post('/autologin',(req,res)=>{
     user.findByCredentials(req.cookies.logincookie[0],req.cookies.logincookie[1]).then((User)=>{
        console.log ("length: "+User.tokens.length);
    if(User.tokens[0].token === req.cookies.tokenCookie){
@@ -150,7 +150,7 @@ user.findByIdAndRemove(id).then((User)=>{
        }  
     });
 
- });*/
+ });
 
 Router.post('/login',(req,res)=>{ 
     console.log("in log in");

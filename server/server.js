@@ -1,5 +1,5 @@
 const path = require('path');
-
+var cookieParser = require('cookie-parser');
 //var request = require("request");
 require('./config/config');
 const suggestRoute=require('./routes/suggestRoute');
@@ -24,6 +24,7 @@ let io = require('socket.io')(http);
 app.use(bodyParser.json());
 
 
+app.use(cookieParser());
 app.use(cors({origin:'*'}));
 
 const port = process.env.PORT || 3000;
@@ -32,6 +33,7 @@ app.use('/suggest',suggestRoute);
 
 app.use('/users',usersRoute);
 app.use('/push',pushRoute);
+
 app.use('/facebook',facebookRoute);
 io.on('connection', (socket) => {
     socket.removeAllListeners()

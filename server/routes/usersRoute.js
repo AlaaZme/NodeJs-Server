@@ -1,12 +1,14 @@
 const express = require('express');
 const _ = require('lodash');
 var fs = require('fs');
+var cookieParser = require('cookie-parser');
 var {user}= require('../models/user');
 var {authenticate} = require('../middleware/authenticate');
 const mongoose = require('mongoose');
 const Router=express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
+var Cookies = require( "cookies" );
 Router.post('/',(req,res)=>{
 
    console.log("in server register");
@@ -91,6 +93,7 @@ console.log(req.query);
 
 });
 Router.get('/', (req,res)=>{
+   
     console.log("test11111");
   user.find().then((user)=>{
    if(!user){
@@ -102,9 +105,6 @@ res.send({user});
      res.status(404).send();
 })
 });
-
-
-
 
 Router.get('/users/:id', (req,res)=>{
     var  id = req.params.id;
@@ -122,8 +122,6 @@ else{
 }
 }).catch((e)=>console.log(e));
 });
-
-
 Router.delete('/users/:id',(req,res)=>{
 var id = req.params.id;
 if(!ObjectID.isValid(id)){
@@ -140,18 +138,48 @@ user.findByIdAndRemove(id).then((User)=>{
 
 });
 
-Router.post('/login',(req,res)=>{ 
- var body = _.pick(req.body,['uname','password']);
+Router.post('/autologin',(req,res)=>{
+    user.findByCredentials(req.cookies.logincookie[0],req.cookies.logincookie[1]).then((User)=>{
+       console.log ("length: "+User.tokens.length);
+   if(User.tokens[0].token === req.cookies.tokenCookie){
+       res.header().send(User.tokens[0].token);   
+       return true;
+   }
+       else{
+  res.status(400).send(); 
+     return false;
+       }  
+    });
 
+ });
+
+Router.post('/login',(req,res)=>{ 
+    console.log("in log in");
+ var body = _.pick(req.body,['uname','password']);
+res.cookie('logincookie',[req.body.uname ,req.body.password ]);//, {maxAge:}
+    console.log(req.body.uname+""+""+req.body.password);
    user.findByCredentials(body.uname,body.password).then((User)=>{
 
-      return User.generateAuthToken().then((token)=>{
-         res.header('x-auth',token).send(User);
-      });
+      if(User.tokens.length>0)
+       User.removeToken(req.cookies.tokenCookie).then(()=>{
+  
+    }, ()=>{
+        res.status(400).send();
+   })
+     return User.generateAuthToken().then((token)=>{ 
+     res.cookie('tokenCookie',token);//, {maxAge:}
+     res.cookie('authCookie',User.authen);
+     res.header('x-auth',token).send(User.authen);   
+    });   
 }).catch((e)=>{
 res.status(400).send();
 });
+ console.log("authen type:  "+ res);
+   console.log('Cookies: ', req.cookies);
+  
 });
+
+
 Router.get('/me', authenticate,  (req,res)=>{
     res.send(req.User);
 });
@@ -161,6 +189,8 @@ Router.delete('/me/token', authenticate, (req,res)=>{
     }, ()=>{
         res.status(400).send();
    })
+
+
 });
 
 Router.post('/update',(req,res)=>{

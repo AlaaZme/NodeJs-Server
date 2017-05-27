@@ -149,7 +149,7 @@ Router.post('/autologin',(req,res)=>{
        console.log ("length: "+User.tokens.length);
           
   // if(User.tokens[0].token === req.cookies.tokenCookie){
-       res.header().send(req.cookies);   
+       res.header().send(User);   
   
   // }
       // else{

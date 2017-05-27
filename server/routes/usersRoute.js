@@ -163,7 +163,9 @@ Router.post('/autologin',(req,res)=>{
 Router.post('/login',(req,res)=>{ 
     console.log("in log in");
  var body = _.pick(req.body,['uname','password']);
+     res.headers['set-cookie'];
 res.cookie('logincookie',[req.body.uname ,req.body.password ]);//, {maxAge:}
+ //res.header("Set-Cookie", set_cookies);
     console.log(req.body.uname+""+""+req.body.password);
    user.findByCredentials(body.uname,body.password).then((User)=>{
 
@@ -174,9 +176,10 @@ res.cookie('logincookie',[req.body.uname ,req.body.password ]);//, {maxAge:}
         res.status(400).send();
    })
      return User.generateAuthToken().then((token)=>{ 
-     res.cookie('tokenCookie',token);//, {maxAge:}
-     res.cookie('authCookie',User.authen);
-     res.header('x-auth',token).send(User);   
+     res.cookie('tokenCookie',token).send('Cookie is set');//, {maxAge:}
+     res.cookie('authCookie',User.authen).send('Cookie is set');
+ 
+     res.header('x-auth',token).send(User);
     });   
 }).catch((e)=>{
 res.status(400).send();

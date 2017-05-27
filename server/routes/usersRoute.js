@@ -150,7 +150,7 @@ Router.post('/autologin',(req,res)=>{
           
   // if(User.tokens[0].token === req.cookies.tokenCookie){
        res.header().send(User);   
-       return true;
+  
   // }
       // else{
   //res.status(400).send(); 

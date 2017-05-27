@@ -146,9 +146,12 @@ user.findByIdAndRemove(id).then((User)=>{
 
 Router.post('/autologin',(req,res)=>{
 
-console.log(req.cookies.logincookie[0]);
-console.log(req.cookies.logincookie[1]);
-    user.findByCredentials(req.cookies.logincookie[0],req.cookies.logincookie[1]).then((User)=>{
+//console.log(req.cookies.logincookie[0]);
+//console.log(req.cookies.logincookie[1]);
+
+console.log(req.body.password);
+console.log(req.body.uname);
+    user.findByCredentials(req.body.uname,req.body.password).then((User)=>{
       // console.log ("length: "+User.tokens.length);
           
   // if(User.tokens[0].token === req.cookies.tokenCookie){

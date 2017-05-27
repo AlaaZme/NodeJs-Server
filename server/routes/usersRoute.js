@@ -164,7 +164,7 @@ Router.post('/login',(req,res)=>{
     console.log("in log in");
  var body = _.pick(req.body,['uname','password']);
  
-res.cookie('logincookie',[req.body.uname ,req.body.password ],{path:'/',secure:true,maxAge: 900000, httpOnly: true});//, {maxAge:}
+res.cookie('logincookie',[req.body.uname ,req.body.password ],{path:'/',secure:false,maxAge: 900000, httpOnly:false});//, {maxAge:}
  //res.header("Set-Cookie", set_cookies);
     console.log(req.body.uname+""+""+req.body.password);
    user.findByCredentials(body.uname,body.password).then((User)=>{
@@ -176,8 +176,8 @@ res.cookie('logincookie',[req.body.uname ,req.body.password ],{path:'/',secure:t
         res.status(400).send();
    })
      return User.generateAuthToken().then((token)=>{ 
-     res.cookie('tokenCookie',token, {path:'/', secure:true, maxAage:120000, httpOnly: true });//, {maxAge:}
-     res.cookie('authCookie',User.authen,{ path:'/',secure:true,maxAge: 900000, httpOnly: true});
+     res.cookie('tokenCookie',token, {path:'/', secure:false, maxAage:120000, httpOnly: false });//, {maxAge:}
+     res.cookie('authCookie',User.authen,{ path:'/',secure:false,maxAge: 900000, httpOnly:false});
      res.header('x-auth',token).send(User);
     });   
 }).catch((e)=>{

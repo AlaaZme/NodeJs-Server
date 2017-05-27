@@ -159,12 +159,12 @@ res.cookie('logincookie',[req.body.uname ,req.body.password ]);//, {maxAge:}
     console.log(req.body.uname+""+""+req.body.password);
    user.findByCredentials(body.uname,body.password).then((User)=>{
 
-   /*   if(User.tokens.length>0)
+      if(User.tokens.length>0)
        User.removeToken(req.cookies.tokenCookie).then(()=>{
   
     }, ()=>{
         res.status(400).send();
-   })*/
+   })
      return User.generateAuthToken().then((token)=>{ 
      res.cookie('tokenCookie',token);//, {maxAge:}
      res.cookie('authCookie',User.authen);

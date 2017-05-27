@@ -141,7 +141,7 @@ Router.post('/autologin',(req,res)=>{
     user.findByCredentials(req.cookies.logincookie[0],req.cookies.logincookie[1]).then((User)=>{
        console.log ("length: "+User.tokens.length);
    if(User.tokens[0].token === req.cookies.tokenCookie){
-       res.header().send(User.tokens[0].token);   
+       res.header().send(User);   
        return true;
    }
        else{

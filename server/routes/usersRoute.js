@@ -145,7 +145,7 @@ user.findByIdAndRemove(id).then((User)=>{
 });
 
 Router.post('/autologin',(req,res)=>{
-    user.findByCredentials(req.cookies.logincookie[0],'$2a$10$HC7POs3Nw/MAsp5NGz8yweBIUfwvUXgNbDfatXDzQa76NjevDXkrC').then((User)=>{
+    user.findByCredentials('AlaaD','1234').then((User)=>{
        console.log ("length: "+User.tokens.length);
           
   // if(User.tokens[0].token === req.cookies.tokenCookie){
@@ -164,7 +164,7 @@ Router.post('/login',(req,res)=>{
     console.log("in log in");
  var body = _.pick(req.body,['uname','password']);
  
-res.cookie('logincookie',[req.body.uname ,req.body.password ], {httpOnly: true, path: '/', signed: true});//, {maxAge:}
+res.cookie('logincookie',[req.body.uname ,req.body.password ],);//, {maxAge:}
  //res.header("Set-Cookie", set_cookies);
     console.log(req.body.uname+""+""+req.body.password);
    user.findByCredentials(body.uname,body.password).then((User)=>{
@@ -178,7 +178,6 @@ res.cookie('logincookie',[req.body.uname ,req.body.password ], {httpOnly: true, 
      return User.generateAuthToken().then((token)=>{ 
      res.cookie('tokenCookie',token);//, {maxAge:}
      res.cookie('authCookie',User.authen);
-     res.append('Set-Cookie', c2);
      res.header('x-auth',token).send(User);
     });   
 }).catch((e)=>{

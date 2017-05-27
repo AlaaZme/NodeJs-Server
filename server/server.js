@@ -24,7 +24,7 @@ let io = require('socket.io')(http);
 app.use(bodyParser.json());
 
 
-app.use(cookieParser());
+
 app.use(cors({origin:'*'}));
 
 const port = process.env.PORT || 3000;
@@ -33,7 +33,7 @@ app.use('/suggest',suggestRoute);
 
 app.use('/users',usersRoute);
 app.use('/push',pushRoute);
-
+app.use(cookieParser());
 app.use('/facebook',facebookRoute);
 io.on('connection', (socket) => {
     socket.removeAllListeners()

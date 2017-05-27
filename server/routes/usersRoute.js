@@ -179,7 +179,6 @@ res.cookie('logincookie',[req.body.uname ,req.body.password ]);//, {maxAge:}
      
      res.cookie('tokenCookie',token).send('Cookie is set');//, {maxAge:}
      res.cookie('authCookie',User.authen).send('Cookie is set');
-       res.header['set-cookie'];
      res.header('x-auth',token).send(User);
     });   
 }).catch((e)=>{

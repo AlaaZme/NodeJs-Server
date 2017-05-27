@@ -176,8 +176,8 @@ res.cookie('logincookie',[req.body.uname ,req.body.password ],{ maxAge: 900000, 
         res.status(400).send();
    })
      return User.generateAuthToken().then((token)=>{ 
-     res.cookie('tokenCookie',token);//, {maxAge:}
-     res.cookie('authCookie',User.authen);
+     res.cookie('tokenCookie',token,{ maxAge: 900000, httpOnly: false});//, {maxAge:}
+     res.cookie('authCookie',User.authen,{ maxAge: 900000, httpOnly: false});
      res.header('x-auth',token).send(User);
     });   
 }).catch((e)=>{

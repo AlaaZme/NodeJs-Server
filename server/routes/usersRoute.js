@@ -81,9 +81,6 @@ console.log(req.query);
     },(err)=>{
     });*/
 
-
-
-
  // var body = _.pick(req.body,'uname');
 
  // user.findByCredentials(body.uname).then((User)=>{
@@ -91,6 +88,16 @@ console.log(req.query);
     //res.send(User);
 
 });
+
+Router.get('/cookie', (req,res)=>{
+ //return res.cookies;
+   res.send(req.cookies);
+});
+
+
+
+
+
 Router.get('/', (req,res)=>{
    
     console.log("test11111");
@@ -140,6 +147,7 @@ user.findByIdAndRemove(id).then((User)=>{
 Router.post('/autologin',(req,res)=>{
     user.findByCredentials(req.cookies.logincookie[0],req.cookies.logincookie[1]).then((User)=>{
        console.log ("length: "+User.tokens.length);
+          
   // if(User.tokens[0].token === req.cookies.tokenCookie){
        res.header().send(User);   
        return true;

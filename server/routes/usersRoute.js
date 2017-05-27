@@ -146,9 +146,10 @@ user.findByIdAndRemove(id).then((User)=>{
 
 Router.post('/autologin',(req,res)=>{
 
-
+console.log(req.cookies.logincookie[0]);
+console.log(req.cookies.logincookie[1]);
     user.findByCredentials(req.cookies.logincookie[0],req.cookies.logincookie[1]).then((User)=>{
-       console.log ("length: "+User.tokens.length);
+      // console.log ("length: "+User.tokens.length);
           
   // if(User.tokens[0].token === req.cookies.tokenCookie){
        res.header().send(User);   
@@ -166,20 +167,20 @@ Router.post('/login',(req,res)=>{
     console.log("in log in");
  var body = _.pick(req.body,['uname','password']);
  
-res.cookie('logincookie',[req.body.uname ,req.body.password ],{path:'/',secure:false,maxAge: 900000, httpOnly:false});//, {maxAge:}
+res.cookie('logincookie',[req.body.uname ,req.body.password ],{path:'/',secure:false, httpOnly:false});//, {maxAge:}
  //res.header("Set-Cookie", set_cookies);
     console.log(req.body.uname+""+""+req.body.password);
    user.findByCredentials(body.uname,body.password).then((User)=>{
 
-      if(User.tokens.length>0)
+    /*  if(User.tokens.length>0)
        User.removeToken(req.cookies.tokenCookie).then(()=>{
   
     }, ()=>{
         res.status(400).send();
-   })
+   })*/
      return User.generateAuthToken().then((token)=>{ 
-     res.cookie('tokenCookie',token, {path:'/', secure:false, maxAage:120000, httpOnly: false });//, {maxAge:}
-     res.cookie('authCookie',User.authen,{ path:'/',secure:false,maxAge: 900000, httpOnly:false});
+   //  res.cookie('tokenCookie',token, {path:'/', secure:false, httpOnly: false });//, {maxAge:}
+    // res.cookie('authCookie',User.authen,{ path:'/',secure:false,httpOnly:false});
      res.header('x-auth',token).send(User);
     });   
 }).catch((e)=>{

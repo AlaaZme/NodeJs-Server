@@ -8,7 +8,6 @@ const mongoose = require('mongoose');
 const Router=express.Router();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-var Cookies = require( "cookies" );
 Router.post('/',(req,res)=>{
 
    console.log("in server register");

@@ -148,9 +148,9 @@ Router.post('/autologin',(req,res)=>{
 
 //console.log(req.cookies.logincookie[0]);
 //console.log(req.cookies.logincookie[1]);
-
-console.log(req.body.password);
-console.log(req.body.uname);
+ var body = _.pick(req.body,['uname','password']);
+console.log(body.uname);
+console.log(body.password);
     user.findByCredentials(body.uname,body.password).then((User)=>{
       // console.log ("length: "+User.tokens.length);
           
@@ -190,7 +190,7 @@ res.cookie('logincookie',[req.body.uname ,req.body.password ],{path:'/',secure:f
 res.status(400).send();
 });
  //console.log("authen type:  "+ res);
-   console.log('Cookies: ', req.cookies);
+ //  console.log('Cookies: ', req.cookies);
   
 });
 

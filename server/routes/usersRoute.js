@@ -138,7 +138,7 @@ user.findByIdAndRemove(id).then((User)=>{
 
 });
 
-Router.post('/autologin',(req,res)=>{
+/*Router.post('/autologin',(req,res)=>{
     user.findByCredentials(req.cookies.logincookie[0],req.cookies.logincookie[1]).then((User)=>{
        console.log ("length: "+User.tokens.length);
    if(User.tokens[0].token === req.cookies.tokenCookie){
@@ -151,7 +151,7 @@ Router.post('/autologin',(req,res)=>{
        }  
     });
 
- });
+ });*/
 
 Router.post('/login',(req,res)=>{ 
     console.log("in log in");
@@ -160,12 +160,12 @@ res.cookie('logincookie',[req.body.uname ,req.body.password ]);//, {maxAge:}
     console.log(req.body.uname+""+""+req.body.password);
    user.findByCredentials(body.uname,body.password).then((User)=>{
 
-      if(User.tokens.length>0)
+   /*   if(User.tokens.length>0)
        User.removeToken(req.cookies.tokenCookie).then(()=>{
   
     }, ()=>{
         res.status(400).send();
-   })
+   })*/
      return User.generateAuthToken().then((token)=>{ 
      res.cookie('tokenCookie',token);//, {maxAge:}
      res.cookie('authCookie',User.authen);

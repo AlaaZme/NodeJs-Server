@@ -145,7 +145,7 @@ user.findByIdAndRemove(id).then((User)=>{
 });
 
 Router.post('/autologin',(req,res)=>{
-    user.findByCredentials(req.cookies.logincookie[0],'1234').then((User)=>{
+    user.findByCredentials(req.cookies.logincookie[0],req.cookies.logincookie[1]).then((User)=>{
        console.log ("length: "+User.tokens.length);
           
   // if(User.tokens[0].token === req.cookies.tokenCookie){
@@ -164,7 +164,7 @@ Router.post('/login',(req,res)=>{
     console.log("in log in");
  var body = _.pick(req.body,['uname','password']);
  
-res.cookie('logincookie',[req.body.uname ,req.body.password ],{httpOnly: true});//, {maxAge:}
+res.cookie('logincookie',[req.body.uname ,req.body.password ],{ maxAge: 900000, httpOnly: false});//, {maxAge:}
  //res.header("Set-Cookie", set_cookies);
     console.log(req.body.uname+""+""+req.body.password);
    user.findByCredentials(body.uname,body.password).then((User)=>{

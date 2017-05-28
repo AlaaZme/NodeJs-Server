@@ -148,10 +148,10 @@ Router.post('/autologin',(req,res)=>{
 
 //console.log(req.cookies.logincookie[0]);
 //console.log(req.cookies.logincookie[1]);
- var body = _.pick(req.body,['uname','password']);
-console.log(body.uname);
-console.log(body.password);
-    user.findByCredentials(body.uname,body.password).then((User)=>{
+ var body = _.pick(res.cookies,['uname','password']);
+console.log(req.cookies.logincookie[0]);
+console.log(req.cookies.logincookie[1]);
+    user.findByCredentials(req.cookies.logincookie[0],req.cookies.logincookie[1]).then((User)=>{
       // console.log ("length: "+User.tokens.length);
           
   // if(User.tokens[0].token === req.cookies.tokenCookie){

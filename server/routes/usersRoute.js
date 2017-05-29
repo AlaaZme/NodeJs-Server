@@ -169,11 +169,16 @@ console.log(req.cookies.logincookie[1]);
  Router.post('/cookie',(req,res)=>{ 
     console.log("in log in");
      var body = _.pick(req.body,['uname','password']);
-   res.cookie('logintest',[req.body.uname ,req.body.password ], { httpOnly: false}).send(req.cookies.remember);//, {maxAge:}
+      res.cookie('user', "whatMan").send();
+  // res.cookie('logintest',[req.body.uname ,req.body.password ], { httpOnly: false}).send(req.cookies.remember);//, {maxAge:}
 
 });
 
+ Router.get('/cookie', function(req, res){
 
+    res.send(req.cookies.user);
+
+  });
 
 Router.post('/login',(req,res)=>{ 
     console.log("in log in");

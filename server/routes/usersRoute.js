@@ -91,32 +91,11 @@ console.log(req.query);
 });
 
 /*Router.post('/cookie', (req,res)=>{
- //return res.cookies;
-
-server = http.createServer( function( req, res ) {
-  var cookies = new Cookies( req, res),AAA
- cookies.set( "AAA", "foo" );
-
-  res.writeHead( 302, { 
-      "Location": "https://obscure-reef-53169.herokuapp.com/users/cookie" 
-    })
-
-
-
- var unsigned = cookies.get( "AAA" );
- console.log(">>>>>"+unsigned);
-
-
-
-    return res.end( "Now let's check." )
-  });
  
 
-
-  res.send(req.cookies);
-});*/
-
-
+ // res.send(req.cookies);
+});
+*/
 
 
 
@@ -187,14 +166,32 @@ console.log(req.cookies.logincookie[1]);
     });
 
  });
+ Router.post('/cookie',(req,res)=>{ 
+    console.log("in log in");
+     var body = _.pick(req.body,['uname','password']);
+   res.cookie('logintest',[req.body.uname ,req.body.password ], { httpOnly: false});//, {maxAge:}
+res.send(req.cookies);
+});
+
+
 
 Router.post('/login',(req,res)=>{ 
     console.log("in log in");
  var body = _.pick(req.body,['uname','password']);
  
-res.cookie('logincookie',[req.body.uname ,req.body.password ], { httpOnly: true});//, {maxAge:}
+res.cookie('logincookie',[req.body.uname ,req.body.password ], { httpOnly: false});//, {maxAge:}
+
+
+//server = http.createServer( function( req, res ) {
+
+
+//});*/
+
+
  //res.header("Set-Cookie", set_cookies);
     console.log(req.body.uname+""+""+req.body.password);
+
+
    user.findByCredentials(body.uname,body.password).then((User)=>{
 
     /*  if(User.tokens.length>0)

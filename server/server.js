@@ -16,7 +16,7 @@ const cors = require('cors');
 var {authenticate} = require('./middleware/authenticate');
 var {formidable} = require('formidable');
 const _ = require('lodash');
-
+var Cookies = require( "cookies" );
 var app = express();
 let http = require('http').Server(app);
 let io = require('socket.io')(http);

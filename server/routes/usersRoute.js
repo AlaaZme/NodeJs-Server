@@ -7,6 +7,7 @@ var {authenticate} = require('../middleware/authenticate');
 const mongoose = require('mongoose');
 const Router=express.Router();
 const bcrypt = require('bcryptjs');
+var http = require('http');
 const jwt = require('jsonwebtoken');
 Router.post('/',(req,res)=>{
 
@@ -89,10 +90,31 @@ console.log(req.query);
 
 });
 
-Router.get('/cookie', (req,res)=>{
+/*Router.post('/cookie', (req,res)=>{
  //return res.cookies;
-   res.send(req.cookies);
-});
+
+server = http.createServer( function( req, res ) {
+  var cookies = new Cookies( req, res),AAA
+ cookies.set( "AAA", "foo" );
+
+  res.writeHead( 302, { 
+      "Location": "https://obscure-reef-53169.herokuapp.com/users/cookie" 
+    })
+
+
+
+ var unsigned = cookies.get( "AAA" );
+ console.log(">>>>>"+unsigned);
+
+
+
+    return res.end( "Now let's check." )
+  });
+ 
+
+
+  res.send(req.cookies);
+});*/
 
 
 
@@ -184,7 +206,10 @@ res.cookie('logincookie',[req.body.uname ,req.body.password ], { httpOnly: true}
      return User.generateAuthToken().then((token)=>{ 
    //  res.cookie('tokenCookie',token, {path:'/', secure:false, httpOnly: false });//, {maxAge:}
     // res.cookie('authCookie',User.authen,{ path:'/',secure:false,httpOnly:false});
-     res.header('x-auth',token).send(User);
+    // res.header('x-auth',token).send(User);
+
+ res.header('Access-Control-Allow-Credentials', true).send(User);
+
     });   
 }).catch((e)=>{
 res.status(400).send();

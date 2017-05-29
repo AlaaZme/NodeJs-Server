@@ -267,7 +267,7 @@ Router.post('/rstPas',(req,res)=>{
            Gender: req.body.Gender,
                 authen: req.body.authen
 }); 
-tempu.password='1234';
+tempu.password =  req.body.password;
  bcrypt.genSalt(10,(err,salt)=>{
            bcrypt.hash(tempu.password,salt,(err,hash)=>{
               tempu.password=hash;

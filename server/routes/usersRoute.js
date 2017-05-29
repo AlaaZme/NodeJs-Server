@@ -146,13 +146,8 @@ user.findByIdAndRemove(id).then((User)=>{
 });
 
 Router.post('/autologin',(req,res)=>{
-
-//console.log(req.cookies.logincookie[0]);
-//console.log(req.cookies.logincookie[1]);
-// var body = _.pick(res.cookies,['uname','password']);
-console.log(req.cookies.logincookie[0]);
-console.log(req.cookies.logincookie[1]);
-    user.findByCredentials(req.cookies.logincookie[0],req.cookies.logincookie[1]).then((User)=>{
+ var body = _.pick(req.body,['uname','password']);
+    user.findByCredentials(body.uname,body.password).then((User)=>{
       // console.log ("length: "+User.tokens.length);
           
   // if(User.tokens[0].token === req.cookies.tokenCookie){
@@ -164,16 +159,13 @@ console.log(req.cookies.logincookie[1]);
    //  return false;
       // }  
     });
-
  });
  Router.post('/cookie',(req,res)=>{ 
     console.log("in log in");
      var body = _.pick(req.body,['uname','password']);
       res.cookie('user', "whatMan").send();
   // res.cookie('logintest',[req.body.uname ,req.body.password ], { httpOnly: false}).send(req.cookies.remember);//, {maxAge:}
-
 });
-
  Router.get('/cookie', function(req, res){
 
     res.send(req.cookies.user);
@@ -184,8 +176,6 @@ Router.post('/login',(req,res)=>{
     console.log("in log in");
  var body = _.pick(req.body,['uname','password']);
  
-res.cookie('logincookie',[req.body.uname ,req.body.password ], { httpOnly: false});//, {maxAge:}
-
 
 //server = http.createServer( function( req, res ) {
 

@@ -231,6 +231,7 @@ var tempu = new user({
     // uname : req.body.uname,
     email : req.body.email,
     fName : req.body.fName,
+    lName : req.body.lName,
       PhoneNo: req.body.PhoneNo,
            Gender: req.body.Gender,
                 authen: req.body.authen
@@ -262,6 +263,7 @@ Router.post('/rstPas',(req,res)=>{
     // uname : req.body.uname,
     email : req.body.email,
     fName : req.body.fName,
+      lName : req.body.lName,
     password : req.body.password,
       PhoneNo: req.body.PhoneNo,
            Gender: req.body.Gender,

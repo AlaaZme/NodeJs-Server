@@ -16,7 +16,7 @@ var tmpUser = new user();
   //processAllFieldsOfTheForm(req, res);
 var User = new user({
     
-     uname : req.body.uname,
+   //  uname : req.body.uname,
     email : req.body.email,
     fName : req.body.fName,
       lName : req.body.lName,
@@ -27,9 +27,9 @@ var User = new user({
     password : req.body.password
     
 });
-var temp =  req.body.uname;
+var temp =  req.body.email;
 
-user.collection.findOne({uname :temp}, function(err,tmpUser) {
+user.collection.findOne({email:temp}, function(err,tmpUser) {
     if(err){
 console.log("in IF unable to fetch user");
     }
@@ -45,7 +45,7 @@ console.log("in IF unable to fetch user");
 console.log(req.query);
     }
     else{
-  console.log(tmpUser.uname);
+  console.log(tmpUser.email);
  //   User.invalidate("uname", "username must be unique");
           //  done(new Error("username must be unique"));
     }
@@ -146,8 +146,8 @@ user.findByIdAndRemove(id).then((User)=>{
 });
 
 Router.post('/autologin',(req,res)=>{
- var body = _.pick(req.body,['uname','password']);
-    user.findByCredentials(body.uname,body.password).then((User)=>{
+ var body = _.pick(req.body,['email','password']);
+    user.findByCredentials(body.email,body.password).then((User)=>{
       // console.log ("length: "+User.tokens.length);
           
   // if(User.tokens[0].token === req.cookies.tokenCookie){
@@ -162,7 +162,7 @@ Router.post('/autologin',(req,res)=>{
  });
  Router.post('/cookie',(req,res)=>{ 
     console.log("in log in");
-     var body = _.pick(req.body,['uname','password']);
+     var body = _.pick(req.body,['email','password']);
       res.cookie('user', "whatMan").send();
   // res.cookie('logintest',[req.body.uname ,req.body.password ], { httpOnly: false}).send(req.cookies.remember);//, {maxAge:}
 });
@@ -174,7 +174,7 @@ Router.post('/autologin',(req,res)=>{
 
 Router.post('/login',(req,res)=>{ 
     console.log("in log in");
- var body = _.pick(req.body,['uname','password']);
+ var body = _.pick(req.body,['email','password']);
  
 
 //server = http.createServer( function( req, res ) {
@@ -184,10 +184,10 @@ Router.post('/login',(req,res)=>{
 
 
  //res.header("Set-Cookie", set_cookies);
-    console.log(req.body.uname+""+""+req.body.password);
+   // console.log(req.body.uname+""+""+req.body.password);
 
 
-   user.findByCredentials(body.uname,body.password).then((User)=>{
+   user.findByCredentials(body.email,body.password).then((User)=>{
 
     /*  if(User.tokens.length>0)
        User.removeToken(req.cookies.tokenCookie).then(()=>{
@@ -228,7 +228,7 @@ Router.delete('/me/token', authenticate, (req,res)=>{
 Router.post('/update',(req,res)=>{
 var tempu = new user({
      _id: req.body.id,
-     uname : req.body.uname,
+    // uname : req.body.uname,
     email : req.body.email,
     fName : req.body.fName,
       PhoneNo: req.body.PhoneNo,
@@ -259,7 +259,7 @@ res.send({success:"failed"})
 Router.post('/rstPas',(req,res)=>{
   var tempu = new user({
      _id: req.body.id,
-     uname : req.body.uname,
+    // uname : req.body.uname,
     email : req.body.email,
     fName : req.body.fName,
     password : req.body.password,

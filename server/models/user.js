@@ -7,9 +7,9 @@ const bcrypt = require('bcryptjs');
 var UserSchema = new mongoose.Schema({
 
 
-uname:{type :String, unique:true, required:true, minlength:1
-},
-fName:{type :String, minlength:1
+/*uname:{type :String, unique:true, required:true, minlength:1
+},*/
+fName:{type :String, minlength:2
 },
 lName:{type :String, minlength:1
 },
@@ -21,14 +21,13 @@ PhoneNo:{type :String,minlength:1
 },
 email:{
     type:String,
+     required:true,
  unique:true,
- //  trim:true,
 minlength:5,
-
-/* validate : {
+ validate : {
         validator : validator.isEmail,
         message : '{VALUE} is not a vaild email'
-    }*/
+    }
 },
 password:{ 
     type: String,
@@ -81,7 +80,7 @@ UserSchema.methods.toJSON = function () {
     var User = this;
     var UserObject = User.toObject();
 
-    return _.pick(UserObject, ['_id','uname','fName','lName','PhoneNo','authen','Gender','email','password'])
+    return _.pick(UserObject, ['_id','fName','lName','PhoneNo','authen','Gender','email','password'])
 
 };
 UserSchema.methods.generateAuthToken = function(){
@@ -115,9 +114,9 @@ return user.findOne({
 });
 
 };
-UserSchema.statics.findByCredentials = function (uname,password){
+UserSchema.statics.findByCredentials = function (email,password){
     var User = this;
-    return User.findOne({uname}).then((user)=>{
+    return User.findOne({email}).then((user)=>{
          if(!user){
              return Promise.reject();
          }
@@ -137,7 +136,7 @@ UserSchema.pre('save',function (next){
     var User=this;
 
 
-    var temp = User.uname;
+    var temp = User.email;
 
    if( User.isModified('password')){
        bcrypt.genSalt(10,(err,salt)=>{

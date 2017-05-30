@@ -24,10 +24,10 @@ email:{
      required:true,
  unique:true,
 minlength:5,
- /*validate : {
+ validate : {
         validator : validator.isEmail,
         message : '{VALUE} is not a vaild email'
-    }*/
+    }
 },
 password:{ 
     type: String,

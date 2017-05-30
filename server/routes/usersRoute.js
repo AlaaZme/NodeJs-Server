@@ -22,7 +22,6 @@ var User = new user({
       lName : req.body.lName,
       PhoneNo: req.body.PhoneNo,
            Gender: req.body.Gender,
-              email: req.body.email,
                 authen: req.body.authen,
     password : req.body.password
     

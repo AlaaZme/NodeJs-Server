@@ -7,7 +7,7 @@ Router.post("/sendPush",(request,res)=>{
        app_id: "aee9826e-2e23-4762-8059-758f6f87a042",
   contents: {"en": request.body.message},
   included_segments: ["All"],
-  large_image:"http://www.beshutaf.org/wp-content/uploads/2015/02/01_logo.png"
+  large_icon:"http://www.beshutaf.org/wp-content/uploads/2015/02/01_logo.png"
  }
  var headers = {
     "Content-Type": "application/json; charset=utf-8",
